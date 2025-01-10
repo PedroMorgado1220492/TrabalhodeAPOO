@@ -2,7 +2,7 @@ public class Utente {
     private String nif; // Número de Identificação Fiscal
     private String genero; // Gênero do utente
     private String nome; // Nome do utente
-    private String contacto; // Contacto do utente
+    private String contacto; // Contacto do utentee
 
     public Utente(String nif, String genero, String nome, String contacto) {
         this.nif = nif;
