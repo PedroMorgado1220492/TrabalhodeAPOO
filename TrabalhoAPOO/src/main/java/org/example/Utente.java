@@ -1,62 +1,40 @@
-public class Livro {
-    private String titulo;
-    private int anoEdicao;
-    private String editora;
-    private String isbn;
-    private String categoria;
-    private String autores;
+public class Utente {
+    private String nif; // Número de Identificação Fiscal
+    private String genero; // Gênero do utente
+    private String nome; // Nome do utente
+    private String contacto; // Contacto do utente
 
-    public Livro(String titulo, int anoEdicao, String editora, String isbn, String categoria, String autores) {
-        if (!validarISBN(isbn)) {
-            throw new IllegalArgumentException("ISBN deve ter 10 ou 13 dígitos: " + isbn);
-        }
-        this.titulo = titulo;
-        this.anoEdicao = anoEdicao;
-        this.editora = editora;
-        this.isbn = isbn;
-        this.categoria = categoria;
-        this.autores = autores;
+    public Utente(String nif, String genero, String nome, String contacto) {
+        this.nif = nif;
+        this.genero = genero;
+        this.nome = nome;
+        this.contacto = contacto;
     }
 
-    // Método de validação simplificado
-    private boolean validarISBN(String isbn) {
-        return isbn.length() == 10 || isbn.length() == 13;
+    // Getters
+    public String getNif() {
+        return nif;
     }
 
-    // Getters e Setters
-    public String getTitulo() {
-        return titulo;
+    public String getGenero() {
+        return genero;
     }
 
-    public int getAnoEdicao() {
-        return anoEdicao;
+    public String getNome() {
+        return nome;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public String getAutores() {
-        return autores;
+    public String getContacto() {
+        return contacto;
     }
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", anoEdicao=" + anoEdicao +
-                ", editora='" + editora + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", autores='" + autores + '\'' +
+        return "Utente{" +
+                "nif='" + nif + '\'' +
+                ", genero='" + genero + '\'' +
+                ", nome='" + nome + '\'' +
+                ", contacto='" + contacto + '\'' +
                 '}';
     }
 }
