@@ -1,14 +1,25 @@
+package org.example;
+
 public class Utente {
     private String nif; // Número de Identificação Fiscal
     private String genero; // Gênero do utente
     private String nome; // Nome do utente
-    private String contacto; // Contacto do utentee
+    private String contacto; // Contacto do utente
 
+    // Construtor completo
     public Utente(String nif, String genero, String nome, String contacto) {
         this.nif = nif;
         this.genero = genero;
         this.nome = nome;
         this.contacto = contacto;
+    }
+
+    // Construtor que aceita apenas o nome
+    public Utente(String nome) {
+        this.nome = nome;
+        this.nif = ""; // Inicializa como vazio
+        this.genero = ""; // Inicializa como vazio
+        this.contacto = ""; // Inicializa como vazio
     }
 
     // Getters
