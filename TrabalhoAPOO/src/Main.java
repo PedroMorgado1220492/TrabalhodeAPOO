@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);
         ControlerLivro controlerLivro = new ControlerLivro(); // Controlador para gerenciar livros
         ControlerJornalRevista controlerJornalRevista = new ControlerJornalRevista(); // Controlador para gerenciar jornais/revistas
         ControlerUtente controlerUtente = new ControlerUtente(); // Controlador para gerenciar utentes
@@ -20,24 +20,24 @@ public class Main {
             System.out.println("5. Gerir Reservas");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
-            opcaoPrincipal = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            opcaoPrincipal = ler.nextInt();
+            ler.nextLine(); // Limpar o buffer
 
             switch (opcaoPrincipal) {
                 case 1:
-                    controlerLivro.gerenciarLivros(scanner); // Chama o método para gerenciar livros
+                    controlerLivro.gerenciarLivros(ler); // Chama o método para gerenciar livros
                     break;
                 case 2:
-                    controlerJornalRevista.gerenciarJornaisRevistas(scanner); // Chama o método para gerenciar jornais/revistas
+                    controlerJornalRevista.gerenciarJornaisRevistas(ler); // Chama o método para gerenciar jornais/revistas
                     break;
                 case 3:
-                    controlerUtente.gerenciarUtentes(scanner); // Chama o método para gerenciar utentes
+                    controlerUtente.gerenciarUtentes(ler); // Chama o método para gerenciar utentes
                     break;
                 case 4:
-                    controlerEmprestimo.gerenciarEmprestimos(scanner); // Chama o método para gerenciar empréstimos
+                    controlerEmprestimo.gerenciarEmprestimos(ler); // Chama o método para gerenciar empréstimos
                     break;
                 case 5:
-                    controlerReservas.gerenciarReservas(scanner); // Chama o método para gerenciar reservas
+                    controlerReservas.gerenciarReservas(ler); // Chama o método para gerenciar reservas
                     break;
                 case 0:
                     System.out.println("Saindo..."); // Mensagem ao sair
@@ -47,6 +47,6 @@ public class Main {
             }
         } while (opcaoPrincipal != 0);
 
-        scanner.close(); // Fecha o scanner ao final
+        ler.close(); // Fecha o scanner ao final
     }
 }

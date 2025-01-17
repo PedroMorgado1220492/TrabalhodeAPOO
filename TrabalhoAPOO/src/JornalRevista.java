@@ -2,47 +2,59 @@ import java.time.LocalDate;
 
 public class JornalRevista {
     private String titulo;
-    private String issn; // ISSN
-    private String editora;
+    private String issn;
     private LocalDate dataPublicacao;
     private String categoria;
+    private String editora;
 
-    public JornalRevista(String titulo, String issn, String editora, LocalDate dataPublicacao, String categoria) {
-        if (!validarISSN(issn)) {
-            throw new IllegalArgumentException("ISSN deve ser válido: " + issn);
-        }
+    public JornalRevista(String titulo, String issn, LocalDate dataPublicacao, String categoria, String editora) {
         this.titulo = titulo;
         this.issn = issn;
-        this.editora = editora;
         this.dataPublicacao = dataPublicacao;
+        this.categoria = categoria;
+        this.editora = editora;
+    }
+
+    // Getters
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getIssn() {
+        return issn;
+    }
+
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    // Setters
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setIssn(String issn) {
+        this.issn = issn;
+    }
+
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
+    }
+
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
-    private boolean validarISSN(String issn) {
-        // Verifica se o ISSN tem o formato correto
-        if (!issn.matches("\\d{4}-\\d{4}")) {
-            return false; // O formato deve ser 0000-0000
-        }
-
-        // Separa os dígitos do ISSN
-        String[] partes = issn.split("-");
-        String parte1 = partes[0];
-        String parte2 = partes[1];
-
-        // Calcula a soma ponderada
-        int soma = 0;
-        for (int i = 0; i < 8; i++) {
-            int digito = (i < 4) ? parte1.charAt(i) - '0' : parte2.charAt(i - 4) - '0';
-            soma += digito * (8 - i); // Ponderação de 8 a 1
-        }
-
-        // Verifica o dígito de verificação
-        int checkDigit = 11 - (soma % 11);
-        if (checkDigit == 10) {
-            return issn.charAt(7) == 'X'; // O último dígito pode ser 'X'
-        } else {
-            return checkDigit == (issn.charAt(7) - '0'); // Verifica se o dígito de verificação está correto
-        }
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
     @Override
@@ -50,9 +62,9 @@ public class JornalRevista {
         return "JornalRevista{" +
                 "titulo='" + titulo + '\'' +
                 ", issn='" + issn + '\'' +
-                ", editora='" + editora + '\'' +
                 ", dataPublicacao=" + dataPublicacao +
                 ", categoria='" + categoria + '\'' +
+                ", editora='" + editora + '\'' +
                 '}';
     }
 }

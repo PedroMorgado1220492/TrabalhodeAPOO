@@ -2,70 +2,23 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ControlerJornalRevista {
-    private JornalRevista[] jornaisRevistas; // Array para armazenar jornais e revistas
-    private int contador; // Contador para rastrear o número de jornais/revistas
+    private JornalRevista[] jornaisRevistas; // Array fixo de 100 jornais/revistas
+    private int contador; // Para rastrear o número de jornais/revistas adicionados
 
     public ControlerJornalRevista() {
-        this.jornaisRevistas = new JornalRevista[100]; // Inicializa o array com capacidade para 100 jornais/revistas
+        this.jornaisRevistas = new JornalRevista[100]; // Inicializa o array com tamanho 100
         this.contador = 0; // Inicializa o contador
     }
 
-    // Método para adicionar um novo jornal/revista ao array
-    public void adicionarJornalRevista(JornalRevista jornalRevista) {
-        if (contador < 100) { // Verifica se ainda há espaço no array
-            jornaisRevistas[contador] = jornalRevista; // Adiciona o jornal/revista na posição atual do contador
-            contador++; // Incrementa o contador
-            System.out.println("Jornal/Revista adicionado com sucesso!");
-        } else {
-            System.out.println("Limite de jornais/revistas atingido!"); // Mensagem de erro se o limite for atingido
-        }
-    }
-
-    // Método para listar todos os jornais e revistas cadastrados
-    public void listarJornaisRevistas() {
-        if (contador == 0) {
-            System.out.println("Nenhum jornal/revista cadastrado."); // Mensagem se não houver jornais/revistas
-            return;
-        }
-        for (int i = 0; i < contador; i++) {
-            System.out.println(i + ": " + jornaisRevistas[i]); // Exibe cada jornal/revista com seu índice
-        }
-    }
-
-    // Método para atualizar um jornal/revista existente
-    public void atualizarJornalRevista(int index, JornalRevista jornalRevista) {
-        if (index >= 0 && index < contador) { // Verifica se o índice é válido
-            jornaisRevistas[index] = jornalRevista; // Atualiza o jornal/revista na posição especificada
-            System.out.println("Jornal/Revista atualizado com sucesso!");
-        } else {
-            System.out.println("Índice inválido!"); // Mensagem de erro se o índice for inválido
-        }
-    }
-
-    // Método para remover um jornal/revista do array
-    public void removerJornalRevista(int index) {
-        if (index >= 0 && index < contador) { // Verifica se o índice é válido
-            for (int i = index; i < contador - 1; i++) {
-                jornaisRevistas[i] = jornaisRevistas[i + 1]; // Move os jornais/revistas para preencher o espaço do removido
-            }
-            jornaisRevistas[contador - 1] = null; // Limpa a última posição
-            contador--; // Decrementa o contador
-            System.out.println("Jornal/Revista removido com sucesso!");
-        } else {
-            System.out.println("Índice inválido!"); // Mensagem de erro se o índice for inválido
-        }
-    }
-
-    // Método para gerenciar as operações relacionadas a jornais e revistas
     public void gerenciarJornaisRevistas(Scanner scanner) {
         int opcao;
 
         do {
-            System.out.println("Menu de Jornais/Revistas:");
+            System.out.println("Menu de Jornais e Revistas:");
             System.out.println("1. Adicionar Jornal/Revista");
             System.out.println("2. Listar Jornais/Revistas");
             System.out.println("3. Atualizar Jornal/Revista");
-            System.out.println("4. Remover Jornal/Revista");
+            System.out.println("4. Deletar Jornal/Revista");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -73,70 +26,140 @@ public class ControlerJornalRevista {
 
             switch (opcao) {
                 case 1:
-                    // Coleta informações do usuário para adicionar um novo jornal/revista
-                    System.out.print("Título: ");
-                    String titulo = scanner.nextLine();
-                    System.out.print("ISSN (formato XXXX-XXXX): ");
-                    String issn = scanner.nextLine();
-                    System.out.print("Editora: ");
-                    String editora = scanner.nextLine();
-                    System.out.print("Data de Publicação (YYYY-MM-DD): ");
-                    LocalDate dataPublicacao = LocalDate.parse(scanner.nextLine());
-                    System.out.print("Categoria: ");
-                    String categoria = scanner.nextLine();
-
-                    try {
-                        // Tenta criar um novo jornal/revista e adicioná-lo
-                        JornalRevista jornalRevista = new JornalRevista(titulo, issn, editora, dataPublicacao, categoria);
-                        adicionarJornalRevista(jornalRevista);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage()); // Exibe mensagem de erro se os dados forem inválidos
-                    }
+                    adicionarJornalRevista(scanner);
                     break;
-
                 case 2:
-                    listarJornaisRevistas(); // Lista todos os jornais e revistas
+                    listarJornaisRevistas();
                     break;
-
                 case 3:
-                    // Coleta informações do usuário para atualizar um jornal/revista existente
-                    System.out.print("Índice do jornal/revista a atualizar: ");
-                    int indexAtualizar = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Novo Título: ");
-                    String novoTitulo = scanner.nextLine();
-                    System.out.print("Novo ISSN (formato XXXX-XXXX): ");
-                    String novoIssn = scanner.nextLine();
-                    System.out.print("Nova Editora: ");
-                    String novaEditora = scanner.nextLine();
-                    System.out.print("Nova Data de Publicação (YYYY-MM-DD): ");
-                    LocalDate novaDataPublicacao = LocalDate.parse(scanner.nextLine());
-                    System.out.print("Nova Categoria: ");
-                    String novaCategoria = scanner.nextLine();
-
-                    try {
-                        // Tenta criar um novo jornal/revista com as informações atualizadas
-                        JornalRevista jornalRevistaAtualizado = new JornalRevista(novoTitulo, novoIssn, novaEditora, novaDataPublicacao, novaCategoria);
-                        atualizarJornalRevista(indexAtualizar, jornalRevistaAtualizado);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage()); // Exibe mensagem de erro se os dados forem inválidos
-                    }
+                    atualizarJornalRevista(scanner);
                     break;
-
                 case 4:
-                    // Coleta o índice do jornal/revista a ser removido
-                    System.out.print("Índice do jornal/revista a remover: ");
-                    int indexRemover = scanner.nextInt();
-                    removerJornalRevista(indexRemover); // Remove o jornal/revista
+                    deletarJornalRevista(scanner);
                     break;
-
                 case 0:
-                    System.out.println("Voltando ao menu principal..."); // Mensagem ao voltar
+                    System.out.println("Voltando ao menu principal...");
                     break;
-
                 default:
-                    System.out.println("Opção inválida! Tente novamente."); // Mensagem de erro para opção inválida
+                    System.out.println("Opção inválida! Tente novamente.");
             }
         } while (opcao != 0);
+    }
+
+    private void adicionarJornalRevista(Scanner scanner) {
+        if (contador >= jornaisRevistas.length) {
+            System.out.println("Não é possível adicionar mais jornais/revistas. O array está cheio.");
+            return;
+        }
+
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+
+        String issn;
+        while (true) {
+            System.out.print("ISSN: ");
+            issn = scanner.nextLine();
+
+            if (validarISSN(issn)) {
+                break; // ISSN válido, sai do loop
+            } else {
+                System.out.println("ISSN inválido. O formato correto é XXXX-XXXX, onde o último dígito pode ser de 0 a 9 ou 'X'. Tente novamente.");
+            }
+        }
+
+        System.out.print("Data de Publicação (YYYY-MM-DD): ");
+        LocalDate dataPublicacao = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Categoria: ");
+        String categoria = scanner.nextLine();
+
+        System.out.print("Editora: ");
+        String editora = scanner.nextLine();
+
+        // Adiciona o jornal/revista ao array
+        jornaisRevistas[contador] = new JornalRevista(titulo, issn, dataPublicacao, categoria, editora);
+        contador++; // Incrementa o contador
+        System.out.println("Jornal/Revista adicionado com sucesso!");
+    }
+
+    private void listarJornaisRevistas() {
+        if (contador == 0) {
+            System.out.println("Nenhum jornal/revista cadastrado.");
+            return;
+        }
+
+        System.out.println("Lista de Jornais e Revistas:");
+        for (int i = 0; i < contador; i++) {
+            System.out.println(jornaisRevistas[i]);
+        }
+    }
+
+    private void atualizarJornalRevista(Scanner scanner) {
+        System.out.print("Digite o índice do jornal/revista que deseja atualizar (0 a " + (contador - 1) + "): ");
+        int indice = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        if (indice < 0 || indice >= contador) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        System.out.print("Novo Título: ");
+        String titulo = scanner.nextLine();
+
+        String issn;
+        while (true) {
+            System.out.print("Novo ISSN: ");
+            issn = scanner.nextLine();
+
+            if (validarISSN(issn)) {
+                break; // ISSN válido, sai do loop
+            } else {
+                System.out.println("ISSN inválido. O formato correto é XXXX-XXXX, onde o último dígito pode ser de 0 a 9 ou 'X'. Tente novamente.");
+            }
+        }
+
+        System.out.print("Nova Data de Publicação (YYYY-MM-DD): ");
+        LocalDate dataPublicacao = LocalDate.parse(scanner.nextLine());
+
+        System.out.print("Nova Categoria: ");
+        String categoria = scanner.nextLine();
+
+        System.out.print("Nova Editora: ");
+        String editora = scanner.nextLine();
+
+        // Atualiza o jornal/revista no array
+        jornaisRevistas[indice].setTitulo(titulo);
+        jornaisRevistas[indice].setIssn(issn);
+        jornaisRevistas[indice].setDataPublicacao(dataPublicacao);
+        jornaisRevistas[indice].setCategoria(categoria);
+        jornaisRevistas[indice].setEditora(editora);
+
+        System.out.println("Jornal/Revista atualizado com sucesso!");
+    }
+
+    private void deletarJornalRevista(Scanner scanner) {
+        System.out.print("Digite o índice do jornal/revista que deseja deletar (0 a " + (contador - 1) + "): ");
+        int indice = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        if (indice < 0 || indice >= contador) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        // Move os elementos para preencher o espaço deixado pelo deletado
+        for (int i = indice; i < contador - 1; i++) {
+            jornaisRevistas[i] = jornaisRevistas[i + 1];
+        }
+        jornaisRevistas[contador - 1] = null; // Limpa a última posição
+        contador--; // Decrementa o contador
+
+        System.out.println("Jornal/Revista deletado com sucesso!");
+    }
+
+    private boolean validarISSN(String issn) {
+        // Validação simples do formato ISSN (XXXX-XXXX)
+        return issn.matches("\\d{4}-\\d{4}");
     }
 }
