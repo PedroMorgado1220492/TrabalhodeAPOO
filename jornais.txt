@@ -1,0 +1,70 @@
+. Frankfurter Allgemeine Zeitung (FAZ)
+Título: Frankfurter Allgemeine Zeitung
+Editora: Frankfurter Allgemeine Zeitung GmbH
+Categoria: Notícias / Economia
+ISSN: 0174-4909
+Data de Publicação: Fundado em 1 de novembro de 1949
+
+El País
+Título: El País
+Editora: PRISA
+Categoria: Notícias / Atualidades
+ISSN: 0213-4608
+Data de Publicação: Fundado em 4 de maio de 1976
+
+Le Monde
+Título: Le Monde
+Editora: Le Monde Group
+Categoria: Notícias / Atualidades
+ISSN: 0395-2037
+Data de Publicação: Fundado em 19 de dezembro de 1944
+
+The Guardian
+Título: The Guardian
+Editora: Guardian Media Group
+Categoria: Notícias / Atualidades
+ISSN: 0261-3077
+Data de Publicação: Fundado em 5 de maio de 1821
+
+The New York Times
+Título: The New York Times
+Editora: The New York Times Company
+Categoria: Notícias / Atualidades
+ISSN: 0362-4331
+Data de Publicação: Fundado em 18 de setembro de 1851
+
+Público
+Título: Público
+Editora: Público Comunicação Social S.A.
+Categoria: Notícias / Atualidades
+ISSN: 0872-778X
+Data de Publicação: Fundado em 5 de março de 1990
+
+ Diário de Notícias
+Título: Diário de Notícias
+Editora: Global Media Group
+Categoria: Notícias / Atualidades
+ISSN: 0870-4164
+Data de Publicação: Fundado em 29 de dezembro de 1864
+
+. Jornal de Notícias
+Título: Jornal de Notícias
+Editora: Global Media Group
+Categoria: Notícias / Atualidades
+ISSN: 0870-3710
+Data de Publicação: Fundado em 21 de junho de 1888
+
+ Expresso
+Título: Expresso
+Editora: Impresa Publishing
+Categoria: Notícias / Economia / Política
+ISSN: 0874-1154
+Data de Publicação: Fundado em 6 de janeiro de 1973
+
+. Correio da Manhã
+Título: Correio da Manhã
+Editora: Cofina Media
+Categoria: Notícias / Sociedade
+ISSN: 0873-9211
+Data de Publicação: Fundado em 19 de março de 1979
+
