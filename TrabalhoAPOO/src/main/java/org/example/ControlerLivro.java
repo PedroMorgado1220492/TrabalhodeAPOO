@@ -1,149 +1,177 @@
-package org.example;
-
 import java.util.Scanner;
 
 public class ControlerLivro {
-    private Livro[] livros; // Array para armazenar os livros
-    private int contador; // Contador para rastrear o número de livros
+    private Livro[] livros;
+    private int contador; // Para rastrear o número de livros adicionados
+    private Scanner ler; // Scanner para entrada do usuário
 
     public ControlerLivro() {
-        this.livros = new Livro[100]; // Inicializa o array com capacidade para 100 livros
+        this.livros = new Livro[100]; // Array fixo de 100 livros
         this.contador = 0; // Inicializa o contador
+        this.ler = new Scanner(System.in); // Inicializa o Scanner
+        inicializarLivros(); // Chama o método para inicializar a lista de livros
     }
 
-    // Método para adicionar um novo livro ao array
+    // Método para retornar a lista de livros
+    public Livro[] getLivros() {
+        return livros;
+    }
+
+    // Método para inicializar a lista de livros com exemplos
+    private void inicializarLivros() {
+        adicionarLivro(new Livro("O Senhor dos Anéis", 2001, "HarperCollins", "0618640150", "Fantasia", "J.R.R. Tolkien"));
+        adicionarLivro(new Livro("1984", 1949, "Secker & Warburg", "0451524934", "Ficção Científica", "George Orwell"));
+        adicionarLivro(new Livro("Dom Casmurro", 1899, "Editora Nacional", "9788535920002", "Romance", "Machado de Assis"));
+        adicionarLivro(new Livro("A Revolução dos Bichos", 1945, "Secker & Warburg", "9788535920003", "Fábula", "George Orwell"));
+        adicionarLivro(new Livro("O Pequeno Príncipe", 1943, "Reynal & Hitchcock", "9788501063000", "Infantil", "Antoine de Saint-Exupéry"));
+    }
+
+    // Método para adicionar um livro ao array
     public void adicionarLivro(Livro livro) {
-        if (contador < 100) { // Verifica se ainda há espaço no array
-            livros[contador] = livro; // Adiciona o livro na posição atual do contador
-            contador++; // Incrementa o contador
+        if (contador < livros.length) {
+            livros[contador] = livro;
+            contador++;
             System.out.println("Livro adicionado com sucesso!");
         } else {
-            System.out.println("Limite de livros atingido!"); // Mensagem de erro se o limite for atingido
+            System.out.println("Não é possível adicionar mais livros. O array está cheio.");
         }
     }
 
-    // Método para listar todos os livros cadastrados
-    public void listarLivros() {
-        if (contador == 0) {
-            System.out.println("Nenhum livro cadastrado."); // Mensagem se não houver livros
-            return;
-        }
-        for (int i = 0; i < contador; i++) {
-            System.out.println(i + ": " + livros[i]); // Exibe cada livro com seu índice
-        }
-    }
-
-    // Método para atualizar um livro existente
-    public void atualizarLivro(int index, Livro livro) {
-        if (index >= 0 && index < contador) { // Verifica se o índice é válido
-            livros[index] = livro; // Atualiza o livro na posição especificada
-            System.out.println("Livro atualizado com sucesso!");
-        } else {
-            System.out.println("Índice inválido!"); // Mensagem de erro se o índice for inválido
-        }
-    }
-
-    // Método para remover um livro do array
-    public void removerLivro(int index) {
-        if (index >= 0 && index < contador) { // Verifica se o índice é válido
-            for (int i = index; i < contador - 1; i++) {
-                livros[i] = livros[i + 1]; // Move os livros para preencher o espaço do livro removido
-            }
-            livros[contador - 1] = null; // Limpa a última posição
-            contador--; // Decrementa o contador
-            System.out.println("Livro removido com sucesso!");
-        } else {
-            System.out.println("Índice inválido!"); // Mensagem de erro se o índice for inválido
-        }
-    }
-
-    // Método para gerenciar as operações relacionadas a livros
-    public void gerenciarLivros(Scanner scanner) {
-        int opcao;
+    public void gerenciarLivros() {
+        int opcaoLivros;
 
         do {
             System.out.println("Menu de Livros:");
             System.out.println("1. Adicionar Livro");
             System.out.println("2. Listar Livros");
             System.out.println("3. Atualizar Livro");
-            System.out.println("4. Remover Livro");
+            System.out.println("4. Deletar Livro");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            opcaoLivros = ler.nextInt();
+            ler.nextLine(); // Limpar o buffer
 
-            switch (opcao) {
+            switch (opcaoLivros) {
                 case 1:
-                    // Coleta informações do usuário para adicionar um novo livro
-                    System.out.print("Título: ");
-                    String titulo = scanner.nextLine();
-                    System.out.print("Ano da Edição: ");
-                    int anoEdicao = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Editora: ");
-                    String editora = scanner.nextLine();
-                    System.out.print("ISBN: ");
-                    String isbn = scanner.nextLine();
-                    System.out.print("Categoria: ");
-                    String categoria = scanner.nextLine();
-                    System.out.print("Autores: ");
-                    String autores = scanner.nextLine();
-
-                    try {
-                        // Tenta criar um novo livro e adicioná-lo
-                        Livro livro = new Livro(titulo, anoEdicao, editora, isbn, categoria, autores);
-                        adicionarLivro(livro);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage()); // Exibe mensagem de erro se o ISBN for inválido
-                    }
+                    adicionarLivro(); // Chama o método para adicionar um livro
                     break;
-
                 case 2:
                     listarLivros(); // Lista todos os livros
                     break;
-
                 case 3:
-                    // Coleta informações do usuário para atualizar um livro existente
-                    System.out.print("Índice do livro a atualizar: ");
-                    int indexAtualizar = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Novo Título: ");
-                    String novoTitulo = scanner.nextLine();
-                    System.out.print("Novo Ano da Edição: ");
-                    int novoAnoEdicao = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Nova Editora: ");
-                    String novaEditora = scanner.nextLine();
-                    System.out.print("Novo ISBN: ");
-                    String novoIsbn = scanner.nextLine();
-                    System.out.print("Nova Categoria: ");
-                    String novaCategoria = scanner.nextLine();
-                    System.out.print("Novos Autores: ");
-                    String novosAutores = scanner.nextLine();
-
-                    try {
-                        // Tenta criar um novo livro com as informações atualizadas
-                        Livro livroAtualizado = new Livro(novoTitulo, novoAnoEdicao, novaEditora, novoIsbn, novaCategoria, novosAutores);
-                        atualizarLivro(indexAtualizar, livroAtualizado);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage()); // Exibe mensagem de erro se o ISBN for inválido
-                    }
+                    atualizarLivro(); // Chama o método para atualizar um livro
                     break;
-
                 case 4:
-                    // Coleta o índice do livro a ser removido
-                    System.out.print("Índice do livro a remover: ");
-                    int indexRemover = scanner.nextInt();
-                    removerLivro(indexRemover); // Remove o livro
+                    deletarLivro(); // Chama o método para deletar um livro
                     break;
-
                 case 0:
                     System.out.println("Voltando ao menu principal..."); // Mensagem ao voltar
                     break;
-
                 default:
                     System.out.println("Opção inválida! Tente novamente."); // Mensagem de erro para opção inválida
             }
-        } while (opcao != 0);
+        } while (opcaoLivros != 0);
+    }
+
+    private void adicionarLivro() {
+        System.out.print("Título: ");
+        String titulo = ler.nextLine();
+        System.out.print("Ano da Edição: ");
+        int anoEdicao = ler.nextInt();
+        ler.nextLine(); // Limpar o buffer
+        System.out.print("Editora: ");
+        String editora = ler.nextLine();
+        System.out.print("Categoria: ");
+        String categoria = ler.nextLine();
+        System.out.print("Autores: ");
+        String autores = ler.nextLine();
+
+        String isbn = "";
+        boolean isbnValido = false;
+
+        // Loop para validar o ISBN
+        while (!isbnValido) {
+            System.out.print("ISBN (ou digite 'voltar' para voltar ao menu): ");
+            isbn = ler.nextLine();
+
+            if (isbn.equalsIgnoreCase("voltar")) {
+                System.out.println("Voltando ao menu anterior...");
+                return; // Retorna ao menu anterior
+            }
+
+            try {
+                Livro livro = new Livro(titulo, anoEdicao, editora, isbn, categoria, autores);
+                adicionarLivro(livro); // Adiciona o livro ao array
+                isbnValido = true; // ISBN válido, sai do loop
+            } catch (IllegalArgumentException e) {
+                System.out.println("Erro: " + e.getMessage() + ". Tente novamente.");
+            }
+        }
+    }
+
+    private void listarLivros() {
+        if (contador == 0) {
+            System.out.println("Nenhum livro cadastrado.");
+            return;
+        }
+        System.out.println("Lista de Livros:");
+        for (int i = 0; i < contador; i++) {
+            System.out.println(livros[i]);
+        }
+    }
+
+    private void atualizarLivro() {
+        System.out.print("Digite o título do livro que deseja atualizar: ");
+        String titulo = ler.nextLine();
+        for (int i = 0; i < contador; i++) {
+            if (livros[i].getTitulo().equalsIgnoreCase(titulo)) {
+                System.out.print("Novo Ano da Edição: ");
+                int anoEdicao = ler.nextInt();
+                ler.nextLine(); // Limpar o buffer
+                System.out.print("Nova Editora: ");
+                String editora = ler.nextLine();
+                System.out.print("Nova Categoria: ");
+                String categoria = ler.nextLine();
+                System.out.print("Novos Autores: ");
+                String autores = ler.nextLine();
+                System.out.print("Novo ISBN: ");
+                String isbn = ler.nextLine();
+
+                // Atualiza os dados do livro
+                livros[i].setAnoEdicao(anoEdicao);
+                livros[i].setEditora(editora);
+                livros[i].setCategoria(categoria);
+                livros[i].setAutores(autores);
+                livros[i].setIsbn(isbn);
+                System.out.println("Livro atualizado com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Livro não encontrado.");
+    }
+
+    private void deletarLivro() {
+        System.out.print("Digite o título do livro que deseja deletar: ");
+        String titulo = ler.nextLine();
+        for (int i = 0; i < contador; i++) {
+            if (livros[i].getTitulo().equalsIgnoreCase(titulo)) {
+                // Move os livros para preencher o espaço
+                for (int j = i; j < contador - 1; j++) {
+                    livros[j] = livros[j + 1];
+                }
+                livros[contador - 1] = null; // Limpa a última posição
+                contador--; // Decrementa o contador
+                System.out.println("Livro deletado com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Livro não encontrado.");
+    }
+
+    // Método para fechar o Scanner ao final do uso
+    public void fecharScanner() {
+        if (ler != null) {
+            ler.close(); // Fecha o scanner ao final
+        }
     }
 }

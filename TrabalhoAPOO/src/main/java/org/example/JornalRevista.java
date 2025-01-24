@@ -1,28 +1,18 @@
-package org.example;
-
 import java.time.LocalDate;
 
 public class JornalRevista {
     private String titulo;
-    private String issn; // ISSN
-    private String editora;
+    private String issn;
     private LocalDate dataPublicacao;
     private String categoria;
+    private String editora;
 
-    public JornalRevista(String titulo, String issn, String editora, LocalDate dataPublicacao, String categoria) {
-        if (!validarISSN(issn)) {
-            throw new IllegalArgumentException("ISSN deve ter 8 dígitos: " + issn);
-        }
+    public JornalRevista(String titulo, String issn, LocalDate dataPublicacao, String categoria, String editora) {
         this.titulo = titulo;
         this.issn = issn;
-        this.editora = editora;
         this.dataPublicacao = dataPublicacao;
         this.categoria = categoria;
-    }
-
-    // Método de validação do ISSN
-    private boolean validarISSN(String issn) {
-        return issn.length() == 8 && issn.matches("\\d{4}-\\d{4}");
+        this.editora = editora;
     }
 
     // Getters
@@ -34,10 +24,6 @@ public class JornalRevista {
         return issn;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
     public LocalDate getDataPublicacao() {
         return dataPublicacao;
     }
@@ -46,14 +32,43 @@ public class JornalRevista {
         return categoria;
     }
 
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getJornaisRevistas() {
+        return titulo;
+    }
+
+    // Setters
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setIssn(String issn) {
+        this.issn = issn;
+    }
+
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
     @Override
     public String toString() {
         return "JornalRevista{" +
                 "titulo='" + titulo + '\'' +
                 ", issn='" + issn + '\'' +
-                ", editora='" + editora + '\'' +
                 ", dataPublicacao=" + dataPublicacao +
                 ", categoria='" + categoria + '\'' +
+                ", editora='" + editora + '\'' +
                 '}';
     }
 }

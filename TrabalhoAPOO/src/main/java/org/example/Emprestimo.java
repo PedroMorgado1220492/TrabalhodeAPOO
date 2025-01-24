@@ -1,5 +1,3 @@
-package org.example;
-
 import java.time.LocalDate;
 
 public class Emprestimo {
@@ -8,7 +6,6 @@ public class Emprestimo {
     private Utente utente; // Utente que fez o empréstimo
     private LocalDate dataPrevistaDevolucao; // Data prevista de devolução
     private Livro[] livros; // Livros emprestados
-    private LocalDate dataEfetivaDevolucao; // Data efetiva de devolução
 
     public Emprestimo(int numero, LocalDate dataInicio, Utente utente, LocalDate dataPrevistaDevolucao, Livro[] livros) {
         this.numero = numero;
@@ -16,7 +13,6 @@ public class Emprestimo {
         this.utente = utente;
         this.dataPrevistaDevolucao = dataPrevistaDevolucao;
         this.livros = livros;
-        this.dataEfetivaDevolucao = null; // Inicialmente, a data efetiva de devolução é nula
     }
 
     // Getters
@@ -40,19 +36,11 @@ public class Emprestimo {
         return livros;
     }
 
-    public LocalDate getDataEfetivaDevolucao() {
-        return dataEfetivaDevolucao;
-    }
-
-    public void setDataEfetivaDevolucao(LocalDate dataEfetivaDevolucao) {
-        this.dataEfetivaDevolucao = dataEfetivaDevolucao; // Define a data efetiva de devolução
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Empréstimo{")
-                .append("número=").append(numero)
+                .append("numero=").append(numero)
                 .append(", dataInicio=").append(dataInicio)
                 .append(", utente=").append(utente.getNome())
                 .append(", dataPrevistaDevolucao=").append(dataPrevistaDevolucao)
@@ -62,8 +50,7 @@ public class Emprestimo {
             sb.append(livro.getTitulo()).append(", "); // Adiciona os títulos dos livros
         }
 
-        sb.append("dataEfetivaDevolucao=").append(dataEfetivaDevolucao)
-                .append('}');
+        sb.append('}');
         return sb.toString();
     }
 }

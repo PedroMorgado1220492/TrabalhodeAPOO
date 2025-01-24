@@ -1,5 +1,3 @@
-package org.example;
-
 public class Utente {
     private String nif; // Número de Identificação Fiscal
     private String genero; // Gênero do utente
@@ -37,6 +35,23 @@ public class Utente {
 
     public String getContacto() {
         return contacto;
+    }
+
+    // Setters
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
     }
 
     @Override
