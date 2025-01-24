@@ -3,10 +3,12 @@ import java.util.Scanner;
 public class ControlerLivro {
     private Livro[] livros;
     private int contador; // Para rastrear o número de livros adicionados
+    private Scanner ler; // Scanner para entrada do usuário
 
     public ControlerLivro() {
         this.livros = new Livro[100]; // Array fixo de 100 livros
         this.contador = 0; // Inicializa o contador
+        this.ler = new Scanner(System.in); // Inicializa o Scanner
         inicializarLivros(); // Chama o método para inicializar a lista de livros
     }
 
@@ -35,7 +37,7 @@ public class ControlerLivro {
         }
     }
 
-    public void gerenciarLivros(Scanner scanner) {
+    public void gerenciarLivros() {
         int opcaoLivros;
 
         do {
@@ -46,21 +48,21 @@ public class ControlerLivro {
             System.out.println("4. Deletar Livro");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
-            opcaoLivros = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            opcaoLivros = ler.nextInt();
+            ler.nextLine(); // Limpar o buffer
 
             switch (opcaoLivros) {
                 case 1:
-                    adicionarLivro(scanner); // Chama o método para adicionar um livro
+                    adicionarLivro(); // Chama o método para adicionar um livro
                     break;
                 case 2:
                     listarLivros(); // Lista todos os livros
                     break;
                 case 3:
-                    atualizarLivro(scanner); // Chama o método para atualizar um livro
+                    atualizarLivro(); // Chama o método para atualizar um livro
                     break;
                 case 4:
-                    deletarLivro(scanner); // Chama o método para deletar um livro
+                    deletarLivro(); // Chama o método para deletar um livro
                     break;
                 case 0:
                     System.out.println("Voltando ao menu principal..."); // Mensagem ao voltar
@@ -71,18 +73,18 @@ public class ControlerLivro {
         } while (opcaoLivros != 0);
     }
 
-    private void adicionarLivro(Scanner scanner) {
+    private void adicionarLivro() {
         System.out.print("Título: ");
-        String titulo = scanner.nextLine();
+        String titulo = ler.nextLine();
         System.out.print("Ano da Edição: ");
-        int anoEdicao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        int anoEdicao = ler.nextInt();
+        ler.nextLine(); // Limpar o buffer
         System.out.print("Editora: ");
-        String editora = scanner.nextLine();
+        String editora = ler.nextLine();
         System.out.print("Categoria: ");
-        String categoria = scanner.nextLine();
+        String categoria = ler.nextLine();
         System.out.print("Autores: ");
-        String autores = scanner.nextLine();
+        String autores = ler.nextLine();
 
         String isbn = "";
         boolean isbnValido = false;
@@ -90,7 +92,7 @@ public class ControlerLivro {
         // Loop para validar o ISBN
         while (!isbnValido) {
             System.out.print("ISBN (ou digite 'voltar' para voltar ao menu): ");
-            isbn = scanner.nextLine();
+            isbn = ler.nextLine();
 
             if (isbn.equalsIgnoreCase("voltar")) {
                 System.out.println("Voltando ao menu anterior...");
@@ -118,22 +120,22 @@ public class ControlerLivro {
         }
     }
 
-    private void atualizarLivro(Scanner scanner) {
+    private void atualizarLivro() {
         System.out.print("Digite o título do livro que deseja atualizar: ");
-        String titulo = scanner.nextLine();
+        String titulo = ler.nextLine();
         for (int i = 0; i < contador; i++) {
             if (livros[i].getTitulo().equalsIgnoreCase(titulo)) {
                 System.out.print("Novo Ano da Edição: ");
-                int anoEdicao = scanner.nextInt();
-                scanner.nextLine(); // Limpar o buffer
+                int anoEdicao = ler.nextInt();
+                ler.nextLine(); // Limpar o buffer
                 System.out.print("Nova Editora: ");
-                String editora = scanner.nextLine();
+                String editora = ler.nextLine();
                 System.out.print("Nova Categoria: ");
-                String categoria = scanner.nextLine();
+                String categoria = ler.nextLine();
                 System.out.print("Novos Autores: ");
-                String autores = scanner.nextLine();
+                String autores = ler.nextLine();
                 System.out.print("Novo ISBN: ");
-                String isbn = scanner.nextLine();
+                String isbn = ler.nextLine();
 
                 // Atualiza os dados do livro
                 livros[i].setAnoEdicao(anoEdicao);
@@ -148,9 +150,9 @@ public class ControlerLivro {
         System.out.println("Livro não encontrado.");
     }
 
-    private void deletarLivro(Scanner scanner) {
+    private void deletarLivro() {
         System.out.print("Digite o título do livro que deseja deletar: ");
-        String titulo = scanner.nextLine();
+        String titulo = ler.nextLine();
         for (int i = 0; i < contador; i++) {
             if (livros[i].getTitulo().equalsIgnoreCase(titulo)) {
                 // Move os livros para preencher o espaço
@@ -164,5 +166,12 @@ public class ControlerLivro {
             }
         }
         System.out.println("Livro não encontrado.");
+    }
+
+    // Método para fechar o Scanner ao final do uso
+    public void fecharScanner() {
+        if (ler != null) {
+            ler.close(); // Fecha o scanner ao final
+        }
     }
 }

@@ -4,13 +4,42 @@ import java.util.Scanner;
 public class ControlerJornalRevista {
     private JornalRevista[] jornaisRevistas; // Array fixo de 100 jornais/revistas
     private int contador; // Para rastrear o número de jornais/revistas adicionados
+    private Scanner ler; // Scanner para entrada do usuário
 
     public ControlerJornalRevista() {
         this.jornaisRevistas = new JornalRevista[100]; // Inicializa o array com tamanho 100
         this.contador = 0; // Inicializa o contador
+        this.ler = new Scanner(System.in); // Inicializa o Scanner
+        inicializarJornaisRevistas(); // Chama o método para inicializar com 5 exemplos
     }
 
-    public void gerenciarJornaisRevistas(Scanner scanner) {
+    // Método para retornar a lista de jornaisrevistas
+    public JornalRevista[] getJornaisRevistas() {
+        return jornaisRevistas;
+    }
+
+    // Método para inicializar o array com 5 jornais/revistas por defeito
+    private void inicializarJornaisRevistas() {
+        // Adiciona 5 jornais/revistas ao array
+        adicionarJornalRevista(new JornalRevista("Revista Veja", "1234-5678", LocalDate.of(2023, 1, 15), "Notícias", "Editora Abril"));
+        adicionarJornalRevista(new JornalRevista("Jornal O Globo", "2345-6789", LocalDate.of(2023, 2, 20), "Jornalismo", "Globo"));
+        adicionarJornalRevista(new JornalRevista("Revista Época", "3456-7890", LocalDate.of(2023, 3, 10), "Atualidades", "Editora Globo"));
+        adicionarJornalRevista(new JornalRevista("Jornal Folha de S.Paulo", "4567-8901", LocalDate.of(2023, 4, 5), "Jornalismo", "Folha"));
+        adicionarJornalRevista(new JornalRevista("Revista Superinteressante", "5678-9012", LocalDate.of(2023, 5, 25), "Ciência", "Editora Abril"));
+    }
+
+    // Método para adicionar um JornalRevista ao array
+    private void adicionarJornalRevista(JornalRevista jornalRevista) {
+        if (contador >= jornaisRevistas.length) {
+            System.out.println("Não é possível adicionar mais jornais/revistas. O array está cheio.");
+            return;
+        }
+        jornaisRevistas[contador] = jornalRevista; // Adiciona o objeto ao array
+        contador++; // Incrementa o contador
+        System.out.println("Jornal/Revista adicionado com sucesso!");
+    }
+
+    public void gerenciarJornaisRevistas() {
         int opcao;
 
         do {
@@ -21,21 +50,21 @@ public class ControlerJornalRevista {
             System.out.println("4. Deletar Jornal/Revista");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            opcao = ler.nextInt();
+            ler.nextLine(); // Limpar o buffer
 
             switch (opcao) {
                 case 1:
-                    adicionarJornalRevista(scanner);
+                    adicionarJornalRevista(); // Chama o método para adicionar um jornal/revista
                     break;
                 case 2:
-                    listarJornaisRevistas();
+                    listarJornaisRevistas(); // Lista todos os jornais/revistas
                     break;
                 case 3:
-                    atualizarJornalRevista(scanner);
+                    atualizarJornalRevista(); // Chama o método para atualizar um jornal/revista
                     break;
                 case 4:
-                    deletarJornalRevista(scanner);
+                    deletarJornalRevista(); // Chama o método para deletar um jornal/revista
                     break;
                 case 0:
                     System.out.println("Voltando ao menu principal...");
@@ -46,19 +75,19 @@ public class ControlerJornalRevista {
         } while (opcao != 0);
     }
 
-    private void adicionarJornalRevista(Scanner scanner) {
+    private void adicionarJornalRevista() {
         if (contador >= jornaisRevistas.length) {
-            System.out.println("Não é possível adicionar mais jornais/revistas. O array está cheio.");
+            System.out.println("Não é possível adicionar mais jornais /revistas. O array está cheio.");
             return;
         }
 
         System.out.print("Título: ");
-        String titulo = scanner.nextLine();
+        String titulo = ler.nextLine();
 
         String issn;
         while (true) {
             System.out.print("ISSN: ");
-            issn = scanner.nextLine();
+            issn = ler.nextLine();
 
             if (validarISSN(issn)) {
                 break; // ISSN válido, sai do loop
@@ -68,18 +97,17 @@ public class ControlerJornalRevista {
         }
 
         System.out.print("Data de Publicação (YYYY-MM-DD): ");
-        LocalDate dataPublicacao = LocalDate.parse(scanner.nextLine());
+        LocalDate dataPublicacao = LocalDate.parse(ler.nextLine());
 
         System.out.print("Categoria: ");
-        String categoria = scanner.nextLine();
+        String categoria = ler.nextLine();
 
         System.out.print("Editora: ");
-        String editora = scanner.nextLine();
+        String editora = ler.nextLine();
 
-        // Adiciona o jornal/revista ao array
-        jornaisRevistas[contador] = new JornalRevista(titulo, issn, dataPublicacao, categoria, editora);
-        contador++; // Incrementa o contador
-        System.out.println("Jornal/Revista adicionado com sucesso!");
+        // Cria um novo objeto JornalRevista
+        JornalRevista novoJornal = new JornalRevista(titulo, issn, dataPublicacao, categoria, editora);
+        adicionarJornalRevista(novoJornal); // Adiciona o novo objeto ao array
     }
 
     private void listarJornaisRevistas() {
@@ -94,10 +122,10 @@ public class ControlerJornalRevista {
         }
     }
 
-    private void atualizarJornalRevista(Scanner scanner) {
+    private void atualizarJornalRevista() {
         System.out.print("Digite o índice do jornal/revista que deseja atualizar (0 a " + (contador - 1) + "): ");
-        int indice = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        int indice = ler.nextInt();
+        ler.nextLine(); // Limpar o buffer
 
         if (indice < 0 || indice >= contador) {
             System.out.println("Índice inválido.");
@@ -105,12 +133,12 @@ public class ControlerJornalRevista {
         }
 
         System.out.print("Novo Título: ");
-        String titulo = scanner.nextLine();
+        String titulo = ler.nextLine();
 
         String issn;
         while (true) {
             System.out.print("Novo ISSN: ");
-            issn = scanner.nextLine();
+            issn = ler.nextLine();
 
             if (validarISSN(issn)) {
                 break; // ISSN válido, sai do loop
@@ -120,13 +148,13 @@ public class ControlerJornalRevista {
         }
 
         System.out.print("Nova Data de Publicação (YYYY-MM-DD): ");
-        LocalDate dataPublicacao = LocalDate.parse(scanner.nextLine());
+        LocalDate dataPublicacao = LocalDate.parse(ler.nextLine());
 
         System.out.print("Nova Categoria: ");
-        String categoria = scanner.nextLine();
+        String categoria = ler.nextLine();
 
         System.out.print("Nova Editora: ");
-        String editora = scanner.nextLine();
+        String editora = ler.nextLine();
 
         // Atualiza o jornal/revista no array
         jornaisRevistas[indice].setTitulo(titulo);
@@ -138,10 +166,10 @@ public class ControlerJornalRevista {
         System.out.println("Jornal/Revista atualizado com sucesso!");
     }
 
-    private void deletarJornalRevista(Scanner scanner) {
+    private void deletarJornalRevista() {
         System.out.print("Digite o índice do jornal/revista que deseja deletar (0 a " + (contador - 1) + "): ");
-        int indice = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        int indice = ler.nextInt();
+        ler.nextLine(); // Limpar o buffer
 
         if (indice < 0 || indice >= contador) {
             System.out.println("Índice inválido.");
@@ -161,5 +189,12 @@ public class ControlerJornalRevista {
     private boolean validarISSN(String issn) {
         // Validação simples do formato ISSN (XXXX-XXXX)
         return issn.matches("\\d{4}-\\d{4}");
+    }
+
+    // Método para fechar o Scanner ao final do uso
+    public void fecharScanner() {
+        if (ler != null) {
+            ler.close(); // Fecha o scanner ao final
+        }
     }
 }

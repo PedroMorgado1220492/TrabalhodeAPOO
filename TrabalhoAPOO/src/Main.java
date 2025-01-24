@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
-        ControlerLivro controlerLivro = new ControlerLivro(); // Controlador para gerenciar livros
-        ControlerJornalRevista controlerJornalRevista = new ControlerJornalRevista(); // Controlador para gerenciar jornais/revistas
-        ControlerUtente controlerUtente = new ControlerUtente(); // Controlador para gerenciar utentes
-        ControlerEmprestimo controlerEmprestimo = new ControlerEmprestimo(controlerLivro); // Controlador para gerenciar empréstimos
-        ControlerReservas controlerReservas = new ControlerReservas(); // Controlador para gerenciar reservas
+        ControlerLivro controlerLivro = new ControlerLivro();
+        ControlerJornalRevista controlerJornalRevista = new ControlerJornalRevista();
+        ControlerUtente controlerUtente = new ControlerUtente();
+        ControlerEmprestimo controlerEmprestimo = new ControlerEmprestimo(controlerLivro, controlerUtente);
+        ControlerReservas controlerReservas = new ControlerReservas(controlerLivro, controlerUtente);
+        Pesquisa pesquisa = new Pesquisa(controlerLivro, controlerJornalRevista); // Instância da classe Pesquisa
 
         int opcaoPrincipal;
 
@@ -18,6 +19,7 @@ public class Main {
             System.out.println("3. Gerir Utentes");
             System.out.println("4. Gerir Empréstimos");
             System.out.println("5. Gerir Reservas");
+            System.out.println("6. Pesquisa por ISBN/ISSN"); // Nova opção de pesquisa
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcaoPrincipal = ler.nextInt();
@@ -25,28 +27,29 @@ public class Main {
 
             switch (opcaoPrincipal) {
                 case 1:
-                    controlerLivro.gerenciarLivros(ler); // Chama o método para gerenciar livros
+                    controlerLivro.gerenciarLivros();
                     break;
                 case 2:
-                    controlerJornalRevista.gerenciarJornaisRevistas(ler); // Chama o método para gerenciar jornais/revistas
+                    controlerJornalRevista.gerenciarJornaisRevistas();
                     break;
                 case 3:
-                    controlerUtente.gerenciarUtentes(ler); // Chama o método para gerenciar utentes
+                    controlerUtente.gerenciarUtentes();
                     break;
                 case 4:
-                    controlerEmprestimo.gerenciarEmprestimos(ler); // Chama o método para gerenciar empréstimos
+                    controlerEmprestimo.gerenciarEmprestimos();
                     break;
                 case 5:
-                    controlerReservas.gerenciarReservas(ler); // Chama o método para gerenciar reservas
+                    controlerReservas.gerenciarReservas();
+                    break;
+                case 6:
+                    pesquisa.menuPesquisa(); // Chama o método de menu de pesquisa
                     break;
                 case 0:
-                    System.out.println("Saindo..."); // Mensagem ao sair
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
-                    System.out.println("Opção inválida! Tente novamente."); // Mensagem de erro para opção inválida
+                    System.out.println("Opção inválida! Tente novamente.");
             }
         } while (opcaoPrincipal != 0);
-
-        ler.close(); // Fecha o scanner ao final
     }
 }

@@ -36,6 +36,10 @@ public class JornalRevista {
         return editora;
     }
 
+    public String getJornaisRevistas() {
+        return titulo;
+    }
+
     // Setters
     public void setTitulo(String titulo) {
         this.titulo = titulo;

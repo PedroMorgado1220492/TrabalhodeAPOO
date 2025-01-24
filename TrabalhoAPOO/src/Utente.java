@@ -37,6 +37,23 @@ public class Utente {
         return contacto;
     }
 
+    // Setters
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
     @Override
     public String toString() {
         return "Utente{" +
