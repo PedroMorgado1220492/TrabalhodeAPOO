@@ -1,4 +1,8 @@
+package org.classes;
+
 import java.util.Scanner;
+import org.controller.ControlerJornalRevista;
+import org.controller.ControlerLivro;
 
 public class Pesquisa {
     private ControlerLivro controlerLivro;

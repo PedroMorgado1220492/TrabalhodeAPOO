@@ -1,3 +1,5 @@
+package org.classes;
+
 public class Utente {
     private String nif; // Número de Identificação Fiscal
     private String genero; // Gênero do utente

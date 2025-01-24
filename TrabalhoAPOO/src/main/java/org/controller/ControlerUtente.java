@@ -1,3 +1,6 @@
+package org.controller;
+
+import org.classes.Utente;
 import java.util.Scanner;
 
 public class ControlerUtente {

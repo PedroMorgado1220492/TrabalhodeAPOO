@@ -1,0 +1,12 @@
+org\controller\ControlerLivro.class
+Main.class
+org\classes\Reserva.class
+org\controller\ControlerEmprestimo.class
+org\controller\ControlerJornalRevista.class
+org\classes\Emprestimo.class
+org\classes\Livro.class
+org\classes\Utente.class
+org\classes\Pesquisa.class
+org\controller\ControlerReservas.class
+org\controller\ControlerUtente.class
+org\classes\JornalRevista.class

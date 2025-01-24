@@ -1,3 +1,6 @@
+package org.controller;
+
+import org.classes.JornalRevista;
 import java.time.LocalDate;
 import java.util.Scanner;
 

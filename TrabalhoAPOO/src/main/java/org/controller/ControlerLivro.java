@@ -1,3 +1,6 @@
+package org.controller;
+
+import org.classes.Livro;
 import java.util.Scanner;
 
 public class ControlerLivro {

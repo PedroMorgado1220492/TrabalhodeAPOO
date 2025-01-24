@@ -1,3 +1,9 @@
+import org.controller.ControlerJornalRevista;
+import org.classes.Pesquisa;
+import org.controller.ControlerEmprestimo;
+import org.controller.ControlerUtente;
+import org.controller.ControlerReservas;
+import org.controller.ControlerLivro;
 import java.util.Scanner;
 
 public class Main {
