@@ -1,0 +1,266 @@
+Javadoc Warnings
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:9: warning: no comment
+public class ControlerEmprestimo {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:16: warning: no comment
+public ControlerEmprestimo(ControlerLivro controlerLivro, ControlerUtente controlerUtente) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:40: warning: no comment
+public void adicionarEmprestimo(Emprestimo emprestimo) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:193: warning: no comment
+public void fecharScanner() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:75: warning: no comment
+public void gerenciarEmprestimos() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerEmprestimo.java:182: warning: no comment
+public void listarEmprestimos() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerJornalRevista.java:7: warning: no comment
+public class ControlerJornalRevista {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerJornalRevista.java:12: warning: no comment
+public ControlerJornalRevista() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerJornalRevista.java:198: warning: no comment
+public void fecharScanner() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerJornalRevista.java:45: warning: no comment
+public void gerenciarJornaisRevistas() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerJornalRevista.java:20: warning: no comment
+public JornalRevista[] getJornaisRevistas() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:6: warning: no comment
+public class ControlerLivro {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:11: warning: no comment
+public ControlerLivro() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:33: warning: no comment
+public void adicionarLivro(Livro livro) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:175: warning: no comment
+public void fecharScanner() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:43: warning: no comment
+public void gerenciarLivros() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerLivro.java:19: warning: no comment
+public Livro[] getLivros() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:9: warning: no comment
+public class ControlerReservas {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:16: warning: no comment
+public ControlerReservas(ControlerLivro controlerLivro, ControlerUtente controlerUtente) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:40: warning: no comment
+public void adicionarReserva(Reserva reserva) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:169: warning: no comment
+public void fecharScanner() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:51: warning: no comment
+public void gerenciarReservas() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerReservas.java:158: warning: no comment
+public void listarReservas() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:6: warning: no comment
+public class ControlerUtente {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:11: warning: no comment
+public ControlerUtente() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:19: warning: no comment
+public void adicionarUtente(Utente utente) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:50: warning: no comment
+public void atualizarUtente() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:94: warning: no comment
+public void deletarUtente() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:198: warning: no comment
+public void fecharScanner() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:115: warning: no comment
+public void gerenciarUtentes() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:205: warning: no comment
+public Utente[] getUtentes() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\controller\ControlerUtente.java:39: warning: no comment
+public void listarUtentes() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:5: warning: no comment
+public class Emprestimo {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:12: warning: no comment
+public Emprestimo(int numero, LocalDate dataInicio, Utente utente, LocalDate dataPrevistaDevolucao, Livro[] livros) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:25: warning: no comment
+public LocalDate getDataInicio() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:33: warning: no comment
+public LocalDate getDataPrevistaDevolucao() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:37: warning: no comment
+public Livro[] getLivros() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:21: warning: no comment
+public int getNumero() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Emprestimo.java:29: warning: no comment
+public Utente getUtente() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:5: warning: no comment
+public class JornalRevista {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:12: warning: no comment
+public JornalRevista(String titulo, String issn, LocalDate dataPublicacao, String categoria, String editora) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:33: warning: no comment
+public String getCategoria() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:29: warning: no comment
+public LocalDate getDataPublicacao() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:37: warning: no comment
+public String getEditora() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:25: warning: no comment
+public String getIssn() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:41: warning: no comment
+public String getJornaisRevistas() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:21: warning: no comment
+public String getTitulo() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:58: warning: no comment
+public void setCategoria(String categoria) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:54: warning: no comment
+public void setDataPublicacao(LocalDate dataPublicacao) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:62: warning: no comment
+public void setEditora(String editora) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:50: warning: no comment
+public void setIssn(String issn) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\JornalRevista.java:46: warning: no comment
+public void setTitulo(String titulo) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:3: warning: no comment
+public class Livro {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:11: warning: no comment
+public Livro(String titulo, int anoEdicao, String editora, String isbn, String categoria, String autores) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:71: warning: no comment
+public String getIsbn() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:66: warning: no comment
+public String getTitulo() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:43: warning: no comment
+public void setAnoEdicao(int anoEdicao) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:55: warning: no comment
+public void setAutores(String autores) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:51: warning: no comment
+public void setCategoria(String categoria) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:47: warning: no comment
+public void setEditora(String editora) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Livro.java:59: warning: no comment
+public void setIsbn(String isbn) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\Main.java:9: warning: no comment
+public class Main {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\Main.java:9: warning: use of default constructor, which does not provide a comment
+public class Main {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\Main.java:10: warning: no comment
+public static void main(String[] args) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Pesquisa.java:7: warning: no comment
+public class Pesquisa {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Pesquisa.java:12: warning: no comment
+public Pesquisa(ControlerLivro controlerLivro, ControlerJornalRevista controlerJornalRevista) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Pesquisa.java:18: warning: no comment
+public void menuPesquisa() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Pesquisa.java:46: warning: no comment
+public void pesquisarPorISBN() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Pesquisa.java:58: warning: no comment
+public void pesquisarPorISSN() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:5: warning: no comment
+public class Reserva {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:13: warning: no comment
+public Reserva(int numero, LocalDate dataRegistro, Utente utente, LocalDate dataInicio, LocalDate dataFim, Livro[] livros) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:39: warning: no comment
+public LocalDate getDataFim() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:35: warning: no comment
+public LocalDate getDataInicio() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:27: warning: no comment
+public LocalDate getDataRegistro() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:43: warning: no comment
+public Livro[] getLivros() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:23: warning: no comment
+public int getNumero() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Reserva.java:31: warning: no comment
+public Utente getUtente() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:3: warning: no comment
+public class Utente {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:18: warning: no comment
+public Utente(String nome) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:10: warning: no comment
+public Utente(String nif, String genero, String nome, String contacto) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:38: warning: no comment
+public String getContacto() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:30: warning: no comment
+public String getGenero() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:26: warning: no comment
+public String getNif() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:34: warning: no comment
+public String getNome() {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:55: warning: no comment
+public void setContacto(String contacto) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:47: warning: no comment
+public void setGenero(String genero) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:43: warning: no comment
+public void setNif(String nif) {
+^
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\org\classes\Utente.java:51: warning: no comment
+public void setNome(String nome) {
+^
+88 warnings

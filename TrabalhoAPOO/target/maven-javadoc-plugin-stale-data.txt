@@ -1,0 +1,50 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+-source
+'23'
+-sourcepath
+'C:/TrabalhodeAPOO/TrabalhoAPOO/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/TrabalhodeAPOO/TrabalhoAPOO/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'TrabalhoAPOO 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'TrabalhoAPOO 1.0-SNAPSHOT API'
+org.classes
+org.controller
+'C:/TrabalhodeAPOO/TrabalhoAPOO/src/main/java/Main.java'
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java\Main.java = 1737754168481
+C:\TrabalhodeAPOO\TrabalhoAPOO\src\main\java = 1737754086911
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\allclasses-index.html = 1737754501730
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\allpackages-index.html = 1737754501736
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\element-list = 1737754501502
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\help-doc.html = 1737754501809
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\index-all.html = 1737754501790
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\index.html = 1737754501689
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\Main.html = 1737754501406
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\member-search-index.js = 1737754501747
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\module-search-index.js = 1737754501739
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\overview-summary.html = 1737754501801
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\overview-tree.html = 1737754501684
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\package-search-index.js = 1737754501742
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\package-summary.html = 1737754501518
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\package-tree.html = 1737754501534
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\package-use.html = 1737754501668
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\search.html = 1737754501795
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\tag-search-index.js = 1737754501750
+C:\TrabalhodeAPOO\TrabalhoAPOO\target\reports\apidocs\type-search-index.js = 1737754501745
