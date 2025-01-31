@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * Classe principal do sistema de gestão de biblioteca.

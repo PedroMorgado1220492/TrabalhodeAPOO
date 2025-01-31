@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * Controlador responsável pela gestão de empréstimos de livros.

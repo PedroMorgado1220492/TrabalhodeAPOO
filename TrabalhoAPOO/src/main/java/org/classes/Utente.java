@@ -1,6 +1,6 @@
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * A classe Utente representa um utente do sistema, contendo informações como
  * Número de Identificação Fiscal (NIF), gênero, nome e contato.

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * A classe Emprestimo representa um empréstimo de livros feito por um utente.

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * A classe Reserva representa uma reserva de livros feita por um utente.

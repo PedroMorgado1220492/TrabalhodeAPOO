@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * ControlerUtente é uma classe que gerencia um conjunto de utentes.

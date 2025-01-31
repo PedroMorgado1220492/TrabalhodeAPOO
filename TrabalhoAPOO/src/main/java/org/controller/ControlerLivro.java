@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * ControlerLivro é uma classe que gerencia um conjunto de livros.

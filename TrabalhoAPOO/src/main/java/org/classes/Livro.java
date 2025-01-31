@@ -1,6 +1,6 @@
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * A classe Livro representa um livro com informações como título, ano de edição,
  * editora, ISBN, categoria e autores.

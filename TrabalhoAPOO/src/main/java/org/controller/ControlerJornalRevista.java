@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * ControlerJornalRevista é uma classe que gerencia um conjunto de jornais e revistas.

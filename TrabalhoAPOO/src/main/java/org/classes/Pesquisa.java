@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * A classe Pesquisa é responsável por gerenciar a pesquisa de livros e jornais/revistas
  * com base em seus identificadores (ISBN e ISSN).

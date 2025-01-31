@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * A classe JornalRevista representa uma publicação periódica, como um jornal ou revista.
  * Ela contém informações sobre o título, ISSN, data de publicação, categoria e editora da publicação.

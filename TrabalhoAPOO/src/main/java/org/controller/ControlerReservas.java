@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Gustavo/PedroP
+ * @author Gustavo/Pedro
  * 
  * 
  * ControlerReservas é uma classe que gerencia um conjunto de reservas de livros.
