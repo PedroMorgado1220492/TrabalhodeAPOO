@@ -41,9 +41,9 @@ public class ControlerReservas {
         Livro livro2 = controlerLivro.getLivros()[1];
 
         // Adiciona 3 reservas por defeito
-        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente1, LocalDate.of(2023, 1, 10), LocalDate.of(2023, 1, 17), new Livro[]{livro1}));
-        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente2, LocalDate.of(2023, 2, 15), LocalDate.of(2023, 2, 22), new Livro[]{livro2}));
-        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente1, LocalDate.of(2023, 3, 5), LocalDate.of(2023, 3, 12), new Livro[]{livro1, livro2}));
+        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente1, LocalDate.of(2025, 4, 10), LocalDate.of(2025, 4, 17), new Livro[]{livro1}));
+        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente2, LocalDate.of(2025, 5, 15), LocalDate.of(2025, 5, 22), new Livro[]{livro2}));
+        adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente1, LocalDate.of(2025, 6, 5), LocalDate.of(2025, 6, 12), new Livro[]{livro1, livro2}));
     }
 
     /**

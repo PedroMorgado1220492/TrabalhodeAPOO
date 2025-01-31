@@ -46,11 +46,13 @@ public class ControlerEmprestimo {
         Utente utente2 = controlerUtente.getUtentes()[1];
         Livro livro1 = controlerLivro.getLivros()[0]; // Supondo que já existam livros
         Livro livro2 = controlerLivro.getLivros()[1];
+        Livro livro3 = controlerLivro.getLivros()[2];
+        Livro livro4 = controlerLivro.getLivros()[3];
 
         // Adiciona 3 empréstimos padrão
-        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 1, 10), utente1, LocalDate.of(2023, 1, 20), new Livro[]{livro1}));
-        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 2, 15), utente2, LocalDate.of(2023, 2, 25), new Livro[]{livro2}));
-        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 3, 5), utente1, LocalDate.of(2023, 3, 15), new Livro[]{livro1, livro2}));
+        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2025, 2, 10), utente1, LocalDate.of(2025, 2, 20), new Livro[]{livro1}));
+        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2025, 2, 15), utente2, LocalDate.of(2025, 2, 25), new Livro[]{livro2}));
+        adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2025, 2, 5), utente1, LocalDate.of(2025, 2, 15), new Livro[]{livro3, livro4}));
     }
 
     /**
