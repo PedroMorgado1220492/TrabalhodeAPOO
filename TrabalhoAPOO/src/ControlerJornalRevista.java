@@ -185,7 +185,7 @@ public class ControlerJornalRevista {
             if (validarISSN(issn)) {
                 break; // ISSN válido, sai do loop
             } else {
-                System.out.println("ISSN inválido. O formato correto é XXXX-XXXX, onde o último dígito pode ser de 0 a 9 ou 'X'. Tente novamente.");
+                System.out.println("ISSN inválido. O formato correto é XXXX-XXXX, onde o último dígito pode ser de 0 a 9. Tente novamente.");
             }
         }
 
