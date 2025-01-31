@@ -1,0 +1,29 @@
+Utentes:
+1: Utente{nif='987654321', genero='feminino', nome='Maria Oliveira', contacto='987654321'}
+2: Utente{nif='456789123', genero='masculino', nome='Carlos Santos', contacto='912345679'}
+3: Utente{nif='321654987', genero='feminino', nome='Ana Costa', contacto='912345680'}
+4: Utente{nif='159753486', genero='masculino', nome='Pedro Almeida', contacto='912345681'}
+
+Livros:
+Livro{titulo='O Senhor dos Anéis', anoEdicao=2001, editora='HarperCollins', isbn='0618640150', categoria='Fantasia', autores='J.R.R. Tolkien'}
+Livro{titulo='1984', anoEdicao=1949, editora='Secker & Warburg', isbn='0451524934', categoria='Ficção Científica', autores='George Orwell'}
+Livro{titulo='Dom Casmurro', anoEdicao=1899, editora='Editora Nacional', isbn='9788535920002', categoria='Romance', autores='Machado de Assis'}
+Livro{titulo='A Revolução dos Bichos', anoEdicao=1945, editora='Secker & Warburg', isbn='9788535920003', categoria='Fábula', autores='George Orwell'}
+Livro{titulo='O Pequeno Príncipe', anoEdicao=1943, editora='Reynal & Hitchcock', isbn='9788501063000', categoria='Infantil', autores='Antoine de Saint-Exupéry'}
+
+JornaisRevistas:
+JornalRevista{titulo='Revista Veja', issn='1234-5678', dataPublicacao=2023-01-15, categoria='Notícias', editora='Editora Abril'}
+JornalRevista{titulo='Jornal O Globo', issn='2345-6789', dataPublicacao=2023-02-20, categoria='Jornalismo', editora='Globo'}
+JornalRevista{titulo='Revista Época', issn='3456-7890', dataPublicacao=2023-03-10, categoria='Atualidades', editora='Editora Globo'}
+JornalRevista{titulo='Jornal Folha de S.Paulo', issn='4567-8901', dataPublicacao=2023-04-05, categoria='Jornalismo', editora='Folha'}
+JornalRevista{titulo='Revista Superinteressante', issn='5678-9012', dataPublicacao=2023-05-25, categoria='Ciência', editora='Editora Abril'}
+
+Emprestimos:
+Empréstimo{numero=1, dataInicio=2025-02-10, utente=João Silva, dataPrevistaDevolucao=2025-02-20, livros=O Senhor dos Anéis, }
+Empréstimo{numero=2, dataInicio=2025-02-15, utente=Maria Oliveira, dataPrevistaDevolucao=2025-02-25, livros=1984, }
+Empréstimo{numero=3, dataInicio=2025-02-05, utente=João Silva, dataPrevistaDevolucao=2025-02-15, livros=Dom Casmurro, A Revolução dos Bichos, }
+
+Reservas:
+0: Reserva{numero=1, dataRegistro=2025-01-31, utente=João Silva, dataInicio=2025-04-10, dataFim=2025-04-17, livros=O Senhor dos Anéis, }
+1: Reserva{numero=2, dataRegistro=2025-01-31, utente=Maria Oliveira, dataInicio=2025-05-15, dataFim=2025-05-22, livros=1984, }
+2: Reserva{numero=3, dataRegistro=2025-01-31, utente=João Silva, dataInicio=2025-06-05, dataFim=2025-06-12, livros=O Senhor dos Anéis, 1984, }
