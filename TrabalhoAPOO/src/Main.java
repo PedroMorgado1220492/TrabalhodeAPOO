@@ -1,3 +1,7 @@
+/**
+ * @author Gustavo Pereira / Pedro Morgado
+ */
+
 import java.util.Scanner;
 
 /**
