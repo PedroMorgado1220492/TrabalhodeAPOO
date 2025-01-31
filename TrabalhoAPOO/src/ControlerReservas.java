@@ -139,6 +139,24 @@ public class ControlerReservas {
             return;
         }
 
+        // Verifica se há sobreposição com reservas existentes
+        if (verificarSobreposicaoReservas(dataInicio, dataFim)) {
+            System.out.println("A reserva se sobrepõe a uma reserva existente.");
+            return;
+        }
+
+        // Verifica se a data de início é antes da data de fim
+        if (!verificarDatasReserva(dataInicio, dataFim)) {
+            System.out.println("A data de início deve ser anterior à data de fim.");
+            return;
+        }
+
+        // Verifica se a data de início é uma data futura
+        if (!verificarDataFutura(dataInicio)) {
+            System.out.println("A data de início deve ser uma data futura.");
+            return;
+        }
+
         // Cria a nova reserva
         Reserva reserva = new Reserva(contador + 1, LocalDate.now(), utente, dataInicio, dataFim, new Livro[]{livro});
         adicionarReserva(reserva);
@@ -164,6 +182,7 @@ public class ControlerReservas {
     private boolean verificarDataFutura(LocalDate dataInicio) {
         return dataInicio.isAfter(LocalDate.now()); // Retorna true se a data de início for uma data futura
     }
+
 
     /**
      * Método para buscar um utente pelo nome.
@@ -226,4 +245,30 @@ public class ControlerReservas {
     public Reserva[] getReservas() {
         return reservas; // Retorna o array de reservas
     }
+
+    /**
+     * Verifica se a nova reserva se sobrepõe a reservas existentes.
+     *
+     * @param dataInicio A data de início da nova reserva.
+     * @param dataFim A data de fim da nova reserva.
+     * @return true se houver sobreposição, false caso contrário.
+     */
+    private boolean verificarSobreposicaoReservas(LocalDate dataInicio, LocalDate dataFim) {
+        for (Reserva reserva : reservas) {
+            if (reserva != null) {
+                LocalDate inicioReserva = reserva.getDataInicio();
+                LocalDate fimReserva = reserva.getDataFim();
+                // Verifica se há sobreposição
+                if ((dataInicio.isBefore(fimReserva) && dataFim.isAfter(inicioReserva)) ||
+                        dataInicio.isEqual(inicioReserva) || dataFim.isEqual(fimReserva) ||
+                        dataInicio.isEqual(fimReserva) || dataFim.isEqual(inicioReserva)) {
+                    return true; // Há sobreposição
+                }
+            }
+        }
+        return false; // Não há sobreposição
+    }
+
 }
+
+
