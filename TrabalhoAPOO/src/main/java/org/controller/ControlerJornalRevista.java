@@ -1,13 +1,24 @@
-package org.controller;
-
-import org.classes.JornalRevista;
 import java.time.LocalDate;
 import java.util.Scanner;
+
+/**
+ * 
+ * @author Gustavo/PedroP
+ * 
+ * 
+ * ControlerJornalRevista é uma classe que gerencia um conjunto de jornais e revistas.
+ * Ela permite adicionar, listar, atualizar e deletar jornais e revistas de um array fixo.
+ */
 
 public class ControlerJornalRevista {
     private JornalRevista[] jornaisRevistas; // Array fixo de 100 jornais/revistas
     private int contador; // Para rastrear o número de jornais/revistas adicionados
     private Scanner ler; // Scanner para entrada do usuário
+
+    /**
+     * Construtor da classe ControlerJornalRevista.
+     * Inicializa o array de jornais/revistas e o contador, e chama o método para inicializar com exemplos.
+     */
 
     public ControlerJornalRevista() {
         this.jornaisRevistas = new JornalRevista[100]; // Inicializa o array com tamanho 100
@@ -16,12 +27,20 @@ public class ControlerJornalRevista {
         inicializarJornaisRevistas(); // Chama o método para inicializar com 5 exemplos
     }
 
-    // Método para retornar a lista de jornaisrevistas
+    /**
+     * Método para retornar a lista de jornais/revistas.
+     *
+     * @return Um array de JornalRevista contendo todos os jornais e revistas cadastrados.
+     */
     public JornalRevista[] getJornaisRevistas() {
+
         return jornaisRevistas;
     }
 
-    // Método para inicializar o array com 5 jornais/revistas por defeito
+    /**
+     * Método para inicializar o array com 5 jornais/revistas por defeito.
+     * Este método adiciona 5 jornais e revistas ao array.
+     */
     private void inicializarJornaisRevistas() {
         // Adiciona 5 jornais/revistas ao array
         adicionarJornalRevista(new JornalRevista("Revista Veja", "1234-5678", LocalDate.of(2023, 1, 15), "Notícias", "Editora Abril"));
@@ -31,7 +50,11 @@ public class ControlerJornalRevista {
         adicionarJornalRevista(new JornalRevista("Revista Superinteressante", "5678-9012", LocalDate.of(2023, 5, 25), "Ciência", "Editora Abril"));
     }
 
-    // Método para adicionar um JornalRevista ao array
+    /**
+     * Método para adicionar um JornalRevista ao array.
+     *
+     * @param jornalRevista O objeto JornalRevista a ser adicionado ao array.
+     */
     private void adicionarJornalRevista(JornalRevista jornalRevista) {
         if (contador >= jornaisRevistas.length) {
             System.out.println("Não é possível adicionar mais jornais/revistas. O array está cheio.");
@@ -41,6 +64,11 @@ public class ControlerJornalRevista {
         contador++; // Incrementa o contador
         System.out.println("Jornal/Revista adicionado com sucesso!");
     }
+
+    /**
+     * Método para gerenciar as operações relacionadas a jornais e revistas.
+     * Este método exibe um menu e permite ao usuário escolher entre adicionar, listar, atualizar ou deletar jornais e revistas.
+     */
 
     public void gerenciarJornaisRevistas() {
         int opcao;
@@ -78,6 +106,11 @@ public class ControlerJornalRevista {
         } while (opcao != 0);
     }
 
+    /**
+     * Método para adicionar um novo jornal/revista.
+     * Este método coleta informações do usuário e valida o ISSN antes de adicionar o objeto ao array.
+     */
+
     private void adicionarJornalRevista() {
         if (contador >= jornaisRevistas.length) {
             System.out.println("Não é possível adicionar mais jornais /revistas. O array está cheio.");
@@ -113,6 +146,11 @@ public class ControlerJornalRevista {
         adicionarJornalRevista(novoJornal); // Adiciona o novo objeto ao array
     }
 
+    /**
+     * Método para listar todos os jornais/revistas cadastrados.
+     * Este método exibe a lista de todos os jornais e revistas no sistema.
+     */
+
     private void listarJornaisRevistas() {
         if (contador == 0) {
             System.out.println("Nenhum jornal/revista cadastrado.");
@@ -124,6 +162,11 @@ public class ControlerJornalRevista {
             System.out.println(jornaisRevistas[i]);
         }
     }
+
+    /**
+     * Método para atualizar um jornal/revista existente.
+     * Este método coleta novas informações do usuário e atualiza o objeto correspondente no array.
+     */
 
     private void atualizarJornalRevista() {
         System.out.print("Digite o índice do jornal/revista que deseja atualizar (0 a " + (contador - 1) + "): ");
@@ -169,6 +212,11 @@ public class ControlerJornalRevista {
         System.out.println("Jornal/Revista atualizado com sucesso!");
     }
 
+    /**
+     * Método para deletar um jornal/revista do array.
+     * Este método remove o objeto correspondente e reorganiza o array.
+     */
+
     private void deletarJornalRevista() {
         System.out.print("Digite o índice do jornal/revista que deseja deletar (0 a " + (contador - 1) + "): ");
         int indice = ler.nextInt();
@@ -189,12 +237,24 @@ public class ControlerJornalRevista {
         System.out.println("Jornal/Revista deletado com sucesso!");
     }
 
+    /**
+     * Método para validar o formato do ISSN.
+     * Este método verifica se o ISSN está no formato correto (XXXX-XXXX).
+     *
+     * @param issn O ISSN a ser validado
+     * @return true se o ISSN for válido, false caso contrário
+     */
+
     private boolean validarISSN(String issn) {
         // Validação simples do formato ISSN (XXXX-XXXX)
         return issn.matches("\\d{4}-\\d{4}");
     }
 
-    // Método para fechar o Scanner ao final do uso
+    /**
+     * Método para fechar o Scanner ao final do uso.
+     * Este método garante que o Scanner seja fechado corretamente.
+     */
+
     public void fecharScanner() {
         if (ler != null) {
             ler.close(); // Fecha o scanner ao final

@@ -1,28 +1,49 @@
-package org.controller;
-
-import org.classes.Utente;
-import org.classes.Livro;
-import org.classes.Emprestimo;
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+/**
+ * 
+ * @author Gustavo/PedroP
+ * 
+ * 
+ * Controlador responsável pela gestão de empréstimos de livros.
+ * Esta classe permite adicionar, listar e gerenciar empréstimos,
+ * além de verificar a disponibilidade de livros e reservas.
+ */
 
 public class ControlerEmprestimo {
     private Emprestimo[] emprestimos; // Array fixo para armazenar empréstimos
     private int contador; // Contador para rastrear o número de empréstimos
     private ControlerLivro controlerLivro; // Controlador de livros
     private ControlerUtente controlerUtente; // Controlador de utentes
+    private ControlerReservas controlerReservas; // Controlador de reservas
     private Scanner ler; // Scanner para entrada do usuário
 
-    public ControlerEmprestimo(ControlerLivro controlerLivro, ControlerUtente controlerUtente) {
+    /**
+     * Construtor da classe ControlerEmprestimo.
+     * Inicializa o array de empréstimos, o contador e os controladores de livros, utentes e reservas.
+     * Também inicializa o Scanner e adiciona 3 empréstimos padrão.
+     *
+     * @param controlerLivro Controlador de livros
+     * @param controlerUtente Controlador de utentes
+     * @param controlerReservas Controlador de reservas
+     */
+
+    public ControlerEmprestimo(ControlerLivro controlerLivro, ControlerUtente controlerUtente, ControlerReservas controlerReservas) {
         this.emprestimos = new Emprestimo[100]; // Inicializa o array com capacidade para 100 empréstimos
         this.contador = 0; // Inicializa o contador
         this.controlerLivro = controlerLivro; // Recebe o controlador de livros
         this.controlerUtente = controlerUtente; // Recebe o controlador de utentes
+        this.controlerReservas = controlerReservas; // Recebe o controlador de reservas
         this.ler = new Scanner(System.in); // Inicializa o Scanner
-        inicializarEmprestimos(); // Adiciona 3 empréstimos por defeito
+        inicializarEmprestimos(); // Adiciona 3 empréstimos padrão
     }
 
-    // Método para inicializar o array com 3 empréstimos por defeito
+    /**
+     * Método para inicializar o array com 3 empréstimos padrão.
+     * Este método verifica se existem utentes e livros disponíveis antes de adicionar os empréstimos.
+     */
     private void inicializarEmprestimos() {
         // Verifica se existem utentes e livros disponíveis
         Utente utente1 = controlerUtente.getUtentes()[0]; // Supondo que já existam utentes
@@ -30,48 +51,31 @@ public class ControlerEmprestimo {
         Livro livro1 = controlerLivro.getLivros()[0]; // Supondo que já existam livros
         Livro livro2 = controlerLivro.getLivros()[1];
 
-        // Adiciona 3 empréstimos por defeito
+        // Adiciona 3 empréstimos padrão
         adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 1, 10), utente1, LocalDate.of(2023, 1, 20), new Livro[]{livro1}));
         adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 2, 15), utente2, LocalDate.of(2023, 2, 25), new Livro[]{livro2}));
         adicionarEmprestimo(new Emprestimo(contador + 1, LocalDate.of(2023, 3, 5), utente1, LocalDate.of(2023, 3, 15), new Livro[]{livro1, livro2}));
     }
 
-    // Método para adicionar um novo empréstimo ao array
+    /**
+     * Método para adicionar um novo empréstimo ao array.
+     *
+     * @param emprestimo O empréstimo a ser adicionado
+     */
     public void adicionarEmprestimo(Emprestimo emprestimo) {
         if (contador < 100) { // Verifica se ainda há espaço no array
-            if (!verificarSobreposicao(emprestimo)) {
-                emprestimos[contador] = emprestimo; // Adiciona o empréstimo na posição atual do contador
-                contador++; // Incrementa o contador
-                System.out.println("Empréstimo adicionado com sucesso!");
-            } else {
-                System.out.println("Não é possível adicionar o empréstimo devido à sobreposição de datas.");
-            }
+            emprestimos[contador] = emprestimo; // Adiciona o empréstimo na posição atual do contador
+            contador++; // Incrementa o contador
+            System.out.println("Empréstimo adicionado com sucesso!");
         } else {
             System.out.println("Limite de empréstimos atingido!"); // Mensagem de erro se o limite for atingido
         }
     }
 
-    // Método para verificar sobreposição de datas
-    private boolean verificarSobreposicao(Emprestimo novoEmprestimo) {
-        for (int i = 0; i < contador; i++) {
-            Emprestimo emprestimoExistente = emprestimos[i];
-            if (emprestimoExistente != null) {
-                LocalDate inicioExistente = emprestimoExistente.getDataInicio();
-                LocalDate fimExistente = emprestimoExistente.getDataPrevistaDevolucao();
-                LocalDate inicioNovo = novoEmprestimo.getDataInicio();
-                LocalDate fimNovo = novoEmprestimo.getDataPrevistaDevolucao();
-
-                // Verifica se há sobreposição
-                if (inicioNovo.isBefore(fimExistente) && fimNovo.isAfter(inicioExistente) ||
-                        inicioNovo.isEqual(inicioExistente) || fimNovo.isEqual(fimExistente)) {
-                    return true; // Há sobreposição
-                }
-            }
-        }
-        return false; // Não há sobreposição
-    }
-
-    // Método para gerenciar as operações relacionadas a empréstimos
+    /**
+     * Método para gerenciar as operações relacionadas a empréstimos.
+     * Este método exibe um menu e permite ao usuário escolher entre adicionar ou listar empréstimos.
+     */
     public void gerenciarEmprestimos() {
         int opcao;
 
@@ -81,29 +85,39 @@ public class ControlerEmprestimo {
             System.out.println("2. Listar Empréstimos");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
-            opcao = ler.nextInt();
-            ler.nextLine(); // Limpar o buffer
 
-            switch (opcao) {
-                case 1:
-                    adicionarNovoEmprestimo();
-                    break;
+            try {
+                opcao = ler.nextInt();
+                ler.nextLine(); // Limpar o buffer
 
-                case 2:
-                    listarEmprestimos(); // Lista todos os empréstimos
-                    break;
+                switch (opcao) {
+                    case 1:
+                        adicionarNovoEmprestimo();
+                        break;
 
-                case 0:
-                    System.out.println("Voltando ao menu principal..."); // Mensagem ao voltar
-                    break;
+                    case 2:
+                        listarEmprestimos(); // Lista todos os empréstimos
+                        break;
 
-                default:
-                    System.out.println("Opção inválida! Tente novamente."); // Mensagem de erro para opção inválida
+                    case 0:
+                        System.out.println("Voltando ao menu principal..."); // Mensagem ao voltar
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida! Tente novamente."); // Mensagem de erro para opção inválida
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida! Por favor, insira um número inteiro.");
+                ler.nextLine(); // Limpa o buffer do scanner
+                opcao = -1; // Define uma opção inválida para continuar o loop
             }
         } while (opcao != 0);
     }
 
-    // Método para adicionar um novo empréstimo
+    /**
+     * Método para adicionar um novo empréstimo.
+     * Este método coleta informações do usuário e verifica a disponibilidade dos livros antes de adicionar o empréstimo.
+     */
     private void adicionarNovoEmprestimo() {
         System.out.print("Data de Início (YYYY-MM-DD): ");
         LocalDate dataInicio = LocalDate.parse(ler.nextLine());
@@ -128,17 +142,24 @@ public class ControlerEmprestimo {
 
         System.out.print("Número de Livros: ");
         int numLivros = ler.nextInt();
+        ler.nextLine(); // Limpa o buffer após nextInt()
         Livro[] livros = new Livro[numLivros];
 
         boolean livroDisponivel = true; // Flag para verificar a disponibilidade do livro
 
         for (int i = 0; i < numLivros; i++) {
             System.out.print("Título do Livro " + (i + 1) + ": ");
-            String tituloLivro = ler.next();
+            String tituloLivro = ler.nextLine(); // Use nextLine() para capturar o título completo
             // Verifica se o livro está cadastrado
             Livro livro = buscarLivro(tituloLivro);
             if (livro != null) {
-                livros[i] = livro; // Adiciona o livro ao array se estiver disponível
+                // Verifica se o livro está reservado nas datas especificadas
+                if (!verificarReservaLivro(livro.getIsbn(), dataInicio, dataPrevistaDevolucao)) {
+                    System.out.println("O livro " + tituloLivro + " está reservado nas datas especificadas.");
+                    livroDisponivel = false; // Marca como não disponível
+                } else {
+                    livros[i] = livro; // Adiciona o livro ao array se estiver disponível
+                }
             } else {
                 System.out.println("Livro não encontrado: " + tituloLivro);
                 livroDisponivel = false; // Marca como não disponível
@@ -153,12 +174,46 @@ public class ControlerEmprestimo {
         }
     }
 
-    // Método para verificar se a data de início é antes da data de devolução
+    /**
+     * Método para verificar se um livro está reservado nas datas especificadas.
+     *
+     * @param isbn O ISBN do livro a ser verificado
+     * @param dataInicio A data de início do empréstimo
+     * @param dataPrevistaDevolucao A data prevista de devolução do empréstimo
+     * @return true se o livro estiver disponível, false caso contrário
+     */
+    private boolean verificarReservaLivro(String isbn, LocalDate dataInicio, LocalDate dataPrevistaDevolucao) {
+        for (Reserva reserva : controlerReservas.getReservas()) {
+            if (reserva != null && reserva.getLivroIsbn().equals(isbn)) {
+                LocalDate inicioReserva = reserva.getDataInicio();
+                LocalDate fimReserva = reserva.getDataFim();
+                // Verifica se há sobreposição com a reserva
+                if ((dataInicio.isBefore(fimReserva) && dataPrevistaDevolucao.isAfter(inicioReserva)) ||
+                        dataInicio.isEqual(inicioReserva) || dataPrevistaDevolucao.isEqual(fimReserva)) {
+                    return false; // Livro reservado
+                }
+            }
+        }
+        return true; // Livro disponível
+    }
+
+    /**
+     * Método para verificar se a data de início é antes da data de devolução.
+     *
+     * @param dataInicio A data de início do empréstimo
+     * @param dataPrevistaDevolucao A data prevista de devolução do empréstimo
+     * @return true se a data de início for anterior à data de devolução, false caso contrário
+     */
     private boolean verificarDatasEmprestimo(LocalDate dataInicio, LocalDate dataPrevistaDevolucao) {
         return dataInicio.isBefore(dataPrevistaDevolucao); // Retorna true se a data de início for antes da data de devolução
     }
 
-    // Método para buscar um utente pelo nome
+    /**
+     * Método para buscar um utente pelo nome.
+     *
+     * @param nomeUtente O nome do utente a ser buscado
+     * @return O utente encontrado ou null se não for encontrado
+     */
     private Utente buscarUtente(String nomeUtente) {
         for (Utente utente : controlerUtente.getUtentes()) { // Supondo que ControlerUtente tenha um método getUtentes()
             if (utente != null && utente.getNome().equalsIgnoreCase(nomeUtente)) {
@@ -168,7 +223,12 @@ public class ControlerEmprestimo {
         return null; // Retorna null se o utente não for encontrado
     }
 
-    // Método para buscar um livro pelo título
+    /**
+     * Método para buscar um livro pelo título.
+     *
+     * @param titulo O título do livro a ser buscado
+     * @return O livro encontrado ou null se não for encontrado
+     */
     private Livro buscarLivro(String titulo) {
         for (Livro livro : controlerLivro.getLivros()) { // Supondo que ControlerLivro tenha um método getLivros()
             if (livro != null && livro.getTitulo().equalsIgnoreCase(titulo)) {
@@ -178,21 +238,16 @@ public class ControlerEmprestimo {
         return null; // Retorna null se o livro não for encontrado
     }
 
-    // Método para listar todos os empréstimos cadastrados
-    public void listarEmprestimos() {
-        if (contador == 0) {
-            System.out.println("Nenhum empréstimo cadastrado."); // Mensagem se não houver empréstimos
-            return;
-        }
+    /**
+     * Método para listar todos os empréstimos.
+     * Este método exibe a lista de todos os empréstimos registrados no sistema.
+     */
+    private void listarEmprestimos() {
+        System.out.println("Lista de Empréstimos:");
         for (int i = 0; i < contador; i++) {
-            System.out.println(i + ": " + emprestimos[i]); // Exibe cada empréstimo com seu índice
-        }
-    }
-
-    // Método para fechar o Scanner ao final do uso
-    public void fecharScanner() {
-        if (ler != null) {
-            ler.close(); // Fecha o scanner ao final
+            if (emprestimos[i] != null) {
+                System.out.println(emprestimos[i].toString()); // Supondo que a classe Emprestimo tenha um método toString() implementado
+            }
         }
     }
 }

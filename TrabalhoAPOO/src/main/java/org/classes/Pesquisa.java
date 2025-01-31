@@ -1,20 +1,33 @@
-package org.classes;
-
 import java.util.Scanner;
-import org.controller.ControlerJornalRevista;
-import org.controller.ControlerLivro;
 
+/**
+ * 
+ * @author Gustavo/PedroP
+ * 
+ * A classe Pesquisa é responsável por gerenciar a pesquisa de livros e jornais/revistas
+ * com base em seus identificadores (ISBN e ISSN).
+ */
 public class Pesquisa {
     private ControlerLivro controlerLivro;
     private ControlerJornalRevista controlerJornalRevista;
     private Scanner ler; // Scanner para entrada do usuário
 
+    /**
+     * Construtor da classe Pesquisa.
+     * Inicializa os controladores de livros e jornais/revistas, e o Scanner.
+     *
+     * @param controlerLivro Controlador de livros
+     * @param controlerJornalRevista Controlador de jornais e revistas
+     */
     public Pesquisa(ControlerLivro controlerLivro, ControlerJornalRevista controlerJornalRevista) {
         this.controlerLivro = controlerLivro;
         this.controlerJornalRevista = controlerJornalRevista;
         this.ler = new Scanner(System.in); // Inicializa o Scanner
     }
-
+    /**
+     * Método que exibe o menu de pesquisa e permite ao usuário escolher entre
+     * pesquisar por ISBN ou ISSN.
+     */
     public void menuPesquisa() {
         int opcao;
 
@@ -42,7 +55,10 @@ public class Pesquisa {
             }
         } while (opcao != 0);
     }
-
+    /**
+     * Método para pesquisar um livro pelo ISBN.
+     * Solicita ao usuário o ISBN e exibe o livro encontrado ou uma mensagem de erro.
+     */
     public void pesquisarPorISBN() {
         System.out.print("Digite o ISBN do livro: ");
         String isbn = ler.nextLine();
@@ -54,7 +70,10 @@ public class Pesquisa {
             System.out.println("Livro não encontrado com o ISBN: " + isbn);
         }
     }
-
+    /**
+     * Método para pesquisar uma revista ou jornal pelo ISSN.
+     * Solicita ao usuário o ISSN e exibe a revista/jornal encontrado ou uma mensagem de erro.
+     */
     public void pesquisarPorISSN() {
         System.out.print("Digite o ISSN da revista/jornal: ");
         String issn = ler.nextLine();
@@ -66,6 +85,12 @@ public class Pesquisa {
             System.out.println("Jornal/Revista não encontrado com o ISSN: " + issn);
         }
     }
+    /**
+     * Método para buscar um livro pelo ISBN.
+     *
+     * @param isbn O ISBN do livro a ser buscado
+     * @return O livro encontrado ou null se não for encontrado
+     */
 
     private Livro buscarLivroPorISBN(String isbn) {
         for (Livro livro : controlerLivro.getLivros()) {
@@ -75,7 +100,12 @@ public class Pesquisa {
         }
         return null;
     }
-
+    /**
+     * Método para buscar uma revista ou jornal pelo ISSN.
+     *
+     * @param issn O ISSN da revista/jornal a ser buscado
+     * @return A revista/jornal encontrado ou null se não for encontrado
+     */
     private JornalRevista buscarJornalRevistaPorISSN(String issn) {
         for (JornalRevista jornalRevista : controlerJornalRevista.getJornaisRevistas()) {
             if (jornalRevista != null && jornalRevista.getIssn().equals(issn)) {

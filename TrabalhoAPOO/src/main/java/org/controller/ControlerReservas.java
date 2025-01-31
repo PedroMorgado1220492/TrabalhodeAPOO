@@ -1,11 +1,14 @@
-package org.controller;
-
-import org.classes.Utente;
-import org.classes.Livro;
-import org.classes.Reserva;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Gustavo/PedroP
+ * 
+ * 
+ * ControlerReservas é uma classe que gerencia um conjunto de reservas de livros.
+ * Ela permite adicionar, listar e gerenciar reservas, além de verificar a disponibilidade de livros e utentes.
+ */
 public class ControlerReservas {
     private Reserva[] reservas; // Array fixo para armazenar reservas
     private int contador; // Contador para rastrear o número de reservas
@@ -13,6 +16,14 @@ public class ControlerReservas {
     private ControlerUtente controlerUtente; // Controlador de utentes
     private Scanner ler; // Scanner para entrada do usuário
 
+    /**
+     * Construtor da classe ControlerReservas.
+     * Inicializa o array de reservas, o contador e os controladores de livros e utentes.
+     * Também inicializa o Scanner e adiciona 3 reservas padrão.
+     *
+     * @param controlerLivro Controlador de livros
+     * @param controlerUtente Controlador de utentes
+     */
     public ControlerReservas(ControlerLivro controlerLivro, ControlerUtente controlerUtente) {
         this.reservas = new Reserva[100]; // Inicializa o array com capacidade para 100 reservas
         this.contador = 0; // Inicializa o contador
@@ -22,7 +33,10 @@ public class ControlerReservas {
         inicializarReservas(); // Adiciona 3 reservas por defeito
     }
 
-    // Método para inicializar o array com 3 reservas por defeito
+    /**
+     * Método para inicializar o array com 3 reservas por defeito.
+     * Este método verifica se existem utentes e livros disponíveis antes de adicionar as reservas.
+     */
     private void inicializarReservas() {
         // Verifica se existem utentes e livros disponíveis
         Utente utente1 = controlerUtente.getUtentes()[0]; // Supondo que já existam utentes
@@ -36,7 +50,11 @@ public class ControlerReservas {
         adicionarReserva(new Reserva(contador + 1, LocalDate.now(), utente1, LocalDate.of(2023, 3, 5), LocalDate.of(2023, 3, 12), new Livro[]{livro1, livro2}));
     }
 
-    // Método para adicionar uma nova reserva ao array
+    /**
+     * Método para adicionar uma nova reserva ao array.
+     *
+     * @param reserva A reserva a ser adicionada
+     */
     public void adicionarReserva(Reserva reserva) {
         if (contador < 100) { // Verifica se ainda há espaço no array
             reservas[contador] = reserva; // Adiciona a reserva na posição atual do contador
@@ -47,7 +65,10 @@ public class ControlerReservas {
         }
     }
 
-    // Método para gerenciar as operações relacionadas a reservas
+    /**
+     * Método para gerenciar as operações relacionadas a reservas.
+     * Este método exibe um menu e permite ao usuário escolher entre adicionar ou listar reservas.
+     */
     public void gerenciarReservas() {
         int opcao;
 
@@ -79,7 +100,10 @@ public class ControlerReservas {
         } while (opcao != 0);
     }
 
-    // Método para adicionar uma nova reserva
+    /**
+     * Método para adicionar uma nova reserva.
+     * Este método coleta informações do utente e do livro, além de validar as datas da reserva.
+     */
     private void adicionarNovaReserva() {
         System.out.print("Utente (Nome): ");
         String nomeUtente = ler.nextLine();
@@ -124,17 +148,33 @@ public class ControlerReservas {
         adicionarReserva(reserva);
     }
 
-    // Método para verificar se a data de início é antes da data de fim
+    /**
+     * Método para verificar se a data de início é antes da data de fim.
+     *
+     * @param dataInicio Data de início da reserva
+     * @param dataFim Data de fim da reserva
+     * @return true se a data de início for antes da data de fim, false caso contrário
+     */
     private boolean verificarDatasReserva(LocalDate dataInicio, LocalDate dataFim) {
         return dataInicio.isBefore(dataFim); // Retorna true se a data de início for antes da data de fim
     }
 
-    // Método para verificar se a data de início é uma data futura
+    /**
+     * Método para verificar se a data de início é uma data futura.
+     *
+     * @param dataInicio Data de início da reserva
+     * @return true se a data de início for uma data futura, false caso contrário
+     */
     private boolean verificarDataFutura(LocalDate dataInicio) {
         return dataInicio.isAfter(LocalDate.now()); // Retorna true se a data de início for uma data futura
     }
 
-    // Método para buscar um utente pelo nome
+    /**
+     * Método para buscar um utente pelo nome.
+     *
+     * @param nomeUtente Nome do utente a ser buscado
+     * @return O utente encontrado ou null se não encontrado
+     */
     private Utente buscarUtente(String nomeUtente) {
         for (Utente utente : controlerUtente.getUtentes()) { // Supondo que ControlerUtente tenha um método getUtentes()
             if (utente != null && utente.getNome().equalsIgnoreCase(nomeUtente)) {
@@ -144,7 +184,12 @@ public class ControlerReservas {
         return null; // Retorna null se o utente não for encontrado
     }
 
-    // Método para buscar um livro pelo título
+    /**
+     * Método para buscar um livro pelo título.
+     *
+     * @param titulo Título do livro a ser buscado
+     * @return O livro encontrado ou null se não encontrado
+     */
     private Livro buscarLivro(String titulo) {
         for (Livro livro : controlerLivro.getLivros()) { // Supondo que ControlerLivro tenha um método getLivros()
             if (livro != null && livro.getTitulo().equalsIgnoreCase(titulo)) {
@@ -154,7 +199,10 @@ public class ControlerReservas {
         return null; // Retorna null se o livro não for encontrado
     }
 
-    // Método para listar todas as reservas cadastradas
+    /**
+     * Método para listar todas as reservas cadastradas.
+     * Este método exibe a lista de todas as reservas no sistema.
+     */
     public void listarReservas() {
         if (contador == 0) {
             System.out.println("Nenhuma reserva cadastrada."); // Mensagem se não houver reservas
@@ -165,10 +213,21 @@ public class ControlerReservas {
         }
     }
 
-    // Método para fechar o Scanner ao final do uso
+    /**
+     * Método para fechar o Scanner ao final do uso.
+     * Este método garante que o Scanner seja fechado corretamente.
+     */
     public void fecharScanner() {
         if (ler != null) {
             ler.close(); // Fecha o scanner ao final
         }
+    }
+    /**
+     * Método para obter todas as reservas.
+     *
+     * @return Um array de Reserva contendo todas as reservas cadastradas.
+     */
+    public Reserva[] getReservas() {
+        return reservas; // Retorna o array de reservas
     }
 }
