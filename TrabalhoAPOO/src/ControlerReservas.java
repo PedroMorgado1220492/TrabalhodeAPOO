@@ -145,17 +145,6 @@ public class ControlerReservas {
             return;
         }
 
-        // Verifica se a data de início é antes da data de fim
-        if (!verificarDatasReserva(dataInicio, dataFim)) {
-            System.out.println("A data de início deve ser anterior à data de fim.");
-            return;
-        }
-
-        // Verifica se a data de início é uma data futura
-        if (!verificarDataFutura(dataInicio)) {
-            System.out.println("A data de início deve ser uma data futura.");
-            return;
-        }
 
         // Cria a nova reserva
         Reserva reserva = new Reserva(contador + 1, LocalDate.now(), utente, dataInicio, dataFim, new Livro[]{livro});
