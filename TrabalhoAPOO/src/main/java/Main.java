@@ -1,15 +1,12 @@
 import java.util.Scanner;
 
 /**
- * 
- * @author Gustavo/Pedro
- * 
- * 
  * Classe principal do sistema de gestão de biblioteca.
  * Esta classe contém o método main que inicia a aplicação e apresenta um menu para o usuário.
  * O usuário pode gerenciar livros, jornais, revistas, utentes, empréstimos e reservas.
+ * 
+ * @author Gustavo/Pedro
  */
-
 public class Main {
     /**
      * Construtor padrão da classe Main.
@@ -36,7 +33,6 @@ public class Main {
         Pesquisa pesquisa = new Pesquisa(controlerLivro, controlerJornalRevista);  // Cria uma instância da classe Pesquisa, passando os controladores de livros e jornais/revistas
 
         int opcaoPrincipal; // Declara uma variável para armazenar a opção escolhida pelo usuário
-
 
         do {
             System.out.println("Menu Principal:"); // Exibe o menu principal
